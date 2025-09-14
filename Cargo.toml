@@ -1,0 +1,8 @@
+[package]
+name = "dodo_payments"
+version = "0.1.0"
+edition = "2024"
+exclude = ["./examples"]
+
+[dependencies]
+reqwest = "0.12.23"
