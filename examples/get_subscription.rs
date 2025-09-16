@@ -14,11 +14,7 @@ async fn main() {
             .environment("test_mode"),
     );
 
-    let response = client
-        .subscriptions()
-        .retrieve(subscription_id)
-        .send()
-        .await;
+    let response = client.get_subscription(subscription_id).send().await;
 
     println!("Response: {:#?}", response);
 }

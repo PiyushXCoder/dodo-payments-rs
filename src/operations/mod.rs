@@ -7,5 +7,6 @@ pub mod list_subscriptions;
 pub mod one_time_payments;
 pub mod create_subscription;
 pub mod get_subscription;
+pub mod change_plan;
 
 pub mod common;

@@ -3,16 +3,17 @@ use std::sync::Arc;
 use crate::{
     common::Environment,
     operations::{
+        change_plan::{ChangePlanBuilder, ProrationBillingMode},
         checkout_sessions::CheckoutSessionsBuilder,
         common::structs::{BillingAddress, ProductItem},
         create_subscription::{CreateSubscriptionBuilder, CustomerRequest},
         get_invoice::GetInvoiceBuilder,
         get_line_items::GetLineItemsBuilder,
         get_payment_details::GetPaymentDetailsBuilder,
+        get_subscription::GetSubscriptionBuilder,
         list_payments::ListPaymentsBuilder,
         list_subscriptions::ListSubscriptionsBuilder,
         one_time_payments::{self, OneTimePaymentBuilder},
-        get_subscription::GetSubscriptionBuilder,
     },
 };
 
@@ -60,20 +61,6 @@ impl DodoPaymentsConfigBuilder {
 
 pub struct DodoPayments {
     handle: Arc<Handle>,
-}
-
-pub struct Subscriptions {
-    handle: Arc<Handle>,
-}
-
-impl Subscriptions {
-    pub fn new(handle: Arc<Handle>) -> Self {
-        Self { handle }
-    }
-
-    pub fn retrieve(&self, subscription_id: String) -> GetSubscriptionBuilder {
-        GetSubscriptionBuilder::new(self.handle.clone(), subscription_id)
-    }
 }
 
 impl DodoPayments {
@@ -124,16 +111,26 @@ impl DodoPayments {
         customer: CustomerRequest,
         billing: BillingAddress,
     ) -> CreateSubscriptionBuilder {
-        CreateSubscriptionBuilder::new(
-            self.handle.clone(),
-            product_id,
-            quantity,
-            customer,
-            billing,
-        )
+        CreateSubscriptionBuilder::new(self.handle.clone(), product_id, quantity, customer, billing)
     }
 
-    pub fn subscriptions(&self) -> Subscriptions {
-        Subscriptions::new(self.handle.clone())
+    pub fn get_subscription(&self, subscription_id: String) -> GetSubscriptionBuilder {
+        GetSubscriptionBuilder::new(self.handle.clone(), subscription_id)
+    }
+
+    pub fn change_plan(
+        &self,
+        subscription_id: String,
+        product_id: String,
+        proration_billing_mode: ProrationBillingMode,
+        quantity: i32,
+    ) -> ChangePlanBuilder {
+        ChangePlanBuilder::new(
+            self.handle.clone(),
+            subscription_id,
+            product_id,
+            proration_billing_mode,
+            quantity,
+        )
     }
 }
