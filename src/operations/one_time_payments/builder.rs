@@ -1,6 +1,9 @@
+use super::super::common::structs::*;
 use super::*;
-use crate::{client::Handle, operations::one_time_payments::{CreateOneTimePaymentResponse, OneTimeProductCartItemReq, CustomerRequest}, operations::checkout_sessions::BillingAddress};
-
+use crate::{
+    client::Handle,
+    operations::one_time_payments::{CreateOneTimePaymentResponse, CustomerRequest},
+};
 use std::{collections::HashMap, sync::Arc};
 
 pub struct OneTimePaymentBuilder {
@@ -9,7 +12,12 @@ pub struct OneTimePaymentBuilder {
 }
 
 impl OneTimePaymentBuilder {
-    pub fn new(handle: Arc<Handle>, product_cart: Vec<OneTimeProductCartItemReq>, customer: CustomerRequest, billing: BillingAddress) -> Self {
+    pub fn new(
+        handle: Arc<Handle>,
+        product_cart: Vec<ProductItem>,
+        customer: CustomerRequest,
+        billing: BillingAddress,
+    ) -> Self {
         Self {
             handle,
             config: CreateOneTimePaymentRequest {

@@ -1,7 +1,8 @@
-use std::sync::Arc;
+pub mod structs;
 
 use reqwest::Response;
 use serde::{Deserialize, Serialize, de};
+use std::sync::Arc;
 
 use crate::{client::Handle, errors::Error};
 

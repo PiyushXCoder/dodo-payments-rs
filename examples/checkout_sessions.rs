@@ -1,5 +1,5 @@
 use dodo_payments::{
-    DodoPayments, client::DodoPaymentsConfigBuilder, operations::checkout_sessions::ProductItem,
+    DodoPayments, client::DodoPaymentsConfigBuilder, operations::common::structs::ProductItem,
 };
 use std::env;
 
@@ -17,10 +17,10 @@ async fn main() {
     );
 
     let response = client
-        .checkout_sessions()
-        .product_cart(vec![ProductItem {
+        .checkout_sessions(vec![ProductItem {
             product_id: product_id,
             quantity: 1,
+            amount: None,
         }])
         .send()
         .await;

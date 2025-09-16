@@ -2,8 +2,8 @@ use dodo_payments::{
     DodoPayments,
     client::DodoPaymentsConfigBuilder,
     operations::{
-        checkout_sessions::BillingAddress,
-        one_time_payments::{AttachExistingCustomer, CustomerRequest, OneTimeProductCartItemReq},
+        common::structs::{BillingAddress, ProductItem},
+        one_time_payments::{AttachExistingCustomer, CustomerRequest},
     },
 };
 use std::env;
@@ -21,7 +21,7 @@ async fn main() {
             .environment("test_mode"),
     );
 
-    let product_cart = vec![OneTimeProductCartItemReq {
+    let product_cart = vec![ProductItem {
         product_id: product_id.clone(),
         quantity: 1,
         amount: Some(100),

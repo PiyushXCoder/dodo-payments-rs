@@ -1,3 +1,4 @@
+use super::super::common::structs::*;
 use super::*;
 use crate::{client::Handle, operations::checkout_sessions::CheckoutSessionsResponse};
 
@@ -9,11 +10,11 @@ pub struct CheckoutSessionsBuilder {
 }
 
 impl CheckoutSessionsBuilder {
-    pub fn new(handle: Arc<Handle>) -> Self {
+    pub fn new(handle: Arc<Handle>, product_cart: Vec<ProductItem>) -> Self {
         Self {
             handle,
             config: CheckoutSessionsConfig {
-                product_cart: vec![],
+                product_cart,
                 customer: None,
                 billing_address: None,
                 allowed_payment_method_types: None,

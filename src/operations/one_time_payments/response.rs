@@ -1,6 +1,6 @@
+use super::super::common::structs::*;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-
 
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Serialize, Deserialize, Clone)]
@@ -20,6 +20,6 @@ pub struct CreateOneTimePaymentResponse {
     pub metadata: HashMap<String, String>,
     pub payment_id: String,
     pub payment_link: Option<String>,
-    pub product_cart: Option<Vec<super::OneTimeProductCartItemReq>>,
+    pub product_cart: Option<Vec<ProductItem>>,
     pub total_amount: i32,
 }
