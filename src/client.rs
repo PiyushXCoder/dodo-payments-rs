@@ -5,11 +5,12 @@ use crate::{
     operations::{
         checkout_sessions::CheckoutSessionsBuilder,
         common::structs::{BillingAddress, ProductItem},
-        list_payments::ListPaymentsBuilder,
-        one_time_payments::{self, OneTimePaymentBuilder},
-        get_payment_details::GetPaymentDetailsBuilder,
         get_invoice::GetInvoiceBuilder,
         get_line_items::GetLineItemsBuilder,
+        get_payment_details::GetPaymentDetailsBuilder,
+        list_payments::ListPaymentsBuilder,
+        list_subscriptions::ListSubscriptionsBuilder,
+        one_time_payments::{self, OneTimePaymentBuilder},
     },
 };
 
@@ -94,5 +95,9 @@ impl DodoPayments {
 
     pub fn get_line_items(&self, payment_id: String) -> GetLineItemsBuilder {
         GetLineItemsBuilder::new(self.handle.clone(), payment_id)
+    }
+
+    pub fn list_subscriptions(&self) -> ListSubscriptionsBuilder {
+        ListSubscriptionsBuilder::new(self.handle.clone())
     }
 }
