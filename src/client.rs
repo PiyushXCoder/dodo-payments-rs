@@ -8,6 +8,7 @@ use crate::{
         list_payments::ListPaymentsBuilder,
         one_time_payments::{self, OneTimePaymentBuilder},
         get_payment_details::GetPaymentDetailsBuilder,
+        get_invoice::GetInvoiceBuilder,
     },
 };
 
@@ -84,5 +85,9 @@ impl DodoPayments {
 
     pub fn get_payment_details(&self, payment_id: String) -> GetPaymentDetailsBuilder {
         GetPaymentDetailsBuilder::new(self.handle.clone(), payment_id)
+    }
+
+    pub fn get_invoice(&self, payment_id: String) -> GetInvoiceBuilder {
+        GetInvoiceBuilder::new(self.handle.clone(), payment_id)
     }
 }
