@@ -5,6 +5,7 @@ use crate::{
     operations::{
         checkout_sessions::CheckoutSessionsBuilder,
         common::structs::{BillingAddress, ProductItem},
+        create_subscription::{CreateSubscriptionBuilder, CustomerRequest},
         get_invoice::GetInvoiceBuilder,
         get_line_items::GetLineItemsBuilder,
         get_payment_details::GetPaymentDetailsBuilder,
@@ -99,5 +100,21 @@ impl DodoPayments {
 
     pub fn list_subscriptions(&self) -> ListSubscriptionsBuilder {
         ListSubscriptionsBuilder::new(self.handle.clone())
+    }
+
+    pub fn create_subscription(
+        &self,
+        product_id: String,
+        quantity: i32,
+        customer: CustomerRequest,
+        billing: BillingAddress,
+    ) -> CreateSubscriptionBuilder {
+        CreateSubscriptionBuilder::new(
+            self.handle.clone(),
+            product_id,
+            quantity,
+            customer,
+            billing,
+        )
     }
 }

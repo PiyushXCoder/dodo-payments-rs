@@ -2,7 +2,7 @@ use dodo_payments::{
     DodoPayments,
     client::DodoPaymentsConfigBuilder,
     operations::{
-        common::structs::{BillingAddress, ProductItem},
+        common::structs::{BillingAddress, CountryCodeAlpha2, ProductItem},
         one_time_payments::{AttachExistingCustomer, CustomerRequest},
     },
 };
@@ -35,7 +35,7 @@ async fn main() {
         street: "123 Main St".to_string(),
         city: "Anytown".to_string(),
         state: "CA".to_string(),
-        country: "US".to_string(),
+        country: CountryCodeAlpha2::US,
         zipcode: "90210".to_string(),
     };
 
