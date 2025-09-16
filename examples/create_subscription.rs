@@ -2,7 +2,7 @@ use dodo_payments::{
     DodoPayments,
     client::DodoPaymentsConfigBuilder,
     operations::common::structs::*,
-    operations::create_subscription::{AttachExistingCustomer, CustomerRequest, NewCustomer},
+    operations::create_subscription::{AttachExistingCustomer, CustomerRequest},
 };
 use std::env;
 
@@ -23,7 +23,7 @@ async fn main() {
     let customer = if let Some(id) = customer_id {
         CustomerRequest::AttachExisting(AttachExistingCustomer { customer_id: id })
     } else {
-        CustomerRequest::New(NewCustomer {
+        CustomerRequest::New(CustomerInfo {
             email: "test@example.com".to_string(),
             name: "Test Customer".to_string(),
             phone_number: None,

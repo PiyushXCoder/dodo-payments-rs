@@ -19,19 +19,11 @@ pub struct AttachExistingCustomer {
     pub customer_id: String,
 }
 
-#[skip_serializing_none]
-#[derive(Debug, Serialize, Deserialize, Clone)]
-pub struct NewCustomer {
-    pub email: String,
-    pub name: String,
-    pub phone_number: Option<String>,
-}
-
 #[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(untagged)]
 pub enum CustomerRequest {
     AttachExisting(AttachExistingCustomer),
-    New(NewCustomer),
+    New(CustomerInfo),
 }
 
 #[skip_serializing_none]

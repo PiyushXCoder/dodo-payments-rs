@@ -14,7 +14,7 @@ pub struct Item {
     pub brand_id: String,
     pub created_at: DateTime<Utc>,
     pub currency: Currency,
-    pub customer: Customer,
+    pub customer: CustomerInfo,
     pub digital_products_delivered: bool,
     pub metadata: Value,
     pub payment_id: String,
@@ -23,11 +23,4 @@ pub struct Item {
     pub payment_method_type: Option<String>,
     pub status: Option<Status>,
     pub subscription_id: Option<String>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Customer {
-    pub customer_id: String,
-    pub email: String,
-    pub name: String,
 }

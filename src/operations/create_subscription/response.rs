@@ -1,3 +1,4 @@
+use super::super::common::structs::*;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
@@ -5,13 +6,6 @@ use std::collections::HashMap;
 pub struct AddonCartResponseItem {
     pub addon_id: String,
     pub quantity: i32,
-}
-
-#[derive(Debug, Serialize, Deserialize, Clone)]
-pub struct CustomerLimitedDetailsResponse {
-    pub customer_id: String,
-    pub email: String,
-    pub name: String,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]

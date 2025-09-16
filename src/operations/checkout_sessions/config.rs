@@ -1,16 +1,7 @@
-use super::super::common::structs::BillingAddress;
 use super::super::common::structs::*;
 use serde::{Deserialize, Serialize};
 use serde_valid::Validate;
 use std::collections::HashMap;
-
-#[serde_with::skip_serializing_none]
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CustomerInfo {
-    pub email: String,
-    pub name: String,
-    pub phone_number: String,
-}
 
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Serialize, Deserialize, Validate)]

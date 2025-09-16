@@ -4,6 +4,14 @@ use std::collections::HashMap;
 
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct CustomerInfo {
+    pub email: String,
+    pub name: String,
+    pub phone_number: Option<String>,
+}
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct BillingAddress {
     pub street: String,
     pub city: String,
@@ -41,6 +49,51 @@ pub enum PaymentMethodTypes {
     Ach,
     AmazonPay,
     AfterpayClearpay,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(rename_all = "snake_case")]
+pub enum DisputeStage {
+    PreDispute,
+    Dispute,
+    PreArbitration,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(rename_all = "snake_case")]
+pub enum DisputeStatus {
+    DisputeOpened,
+    DisputeExpired,
+    DisputeAccepted,
+    DisputeCancelled,
+    DisputeChallenged,
+    DisputeWon,
+    DisputeLost,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(rename_all = "snake_case")]
+pub enum IntentStatus {
+    Succeeded,
+    Failed,
+    Cancelled,
+    Processing,
+    RequiresCustomerAction,
+    RequiresMerchantAction,
+    RequiresPaymentMethod,
+    RequiresConfirmation,
+    RequiresCapture,
+    PartiallyCaptured,
+    PartiallyCapturedAndCapturable,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(rename_all = "snake_case")]
+pub enum RefundStatus {
+    Succeeded,
+    Failed,
+    Pending,
+    Review,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
@@ -493,4 +546,3 @@ pub enum TimeInterval {
     Month,
     Year,
 }
-

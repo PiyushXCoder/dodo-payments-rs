@@ -1,7 +1,8 @@
+use super::super::common::structs::*;
+use super::config::SubscriptionStatus;
+use crate::operations::common::structs::{BillingAddress, Currency};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use crate::operations::common::structs::{BillingAddress, Currency};
-use super::config::SubscriptionStatus;
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct ListSubscriptionsResponse {
@@ -13,12 +14,12 @@ pub struct SubscriptionListResponseItem {
     pub billing: BillingAddress,
     pub cancel_at_next_billing_date: bool,
     pub cancelled_at: Option<String>, // date-time
-    pub created_at: String, // date-time
+    pub created_at: String,           // date-time
     pub currency: Currency,
     pub customer: CustomerLimitedDetailsResponse,
     pub discount_cycles_remaining: Option<i32>,
     pub discount_id: Option<String>,
-    pub metadata: Metadata,
+    pub metadata: HashMap<String, String>,
     pub next_billing_date: String, // date-time
     pub on_demand: bool,
     pub payment_frequency_count: i32,
@@ -33,19 +34,6 @@ pub struct SubscriptionListResponseItem {
     pub subscription_period_interval: TimeInterval,
     pub tax_inclusive: bool,
     pub trial_period_days: i32,
-}
-
-#[derive(Debug, Serialize, Deserialize, Clone)]
-pub struct CustomerLimitedDetailsResponse {
-    pub customer_id: String,
-    pub email: String,
-    pub name: String,
-}
-
-#[derive(Debug, Serialize, Deserialize, Clone)]
-pub struct Metadata {
-    #[serde(flatten)]
-    pub extra: HashMap<String, String>,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
