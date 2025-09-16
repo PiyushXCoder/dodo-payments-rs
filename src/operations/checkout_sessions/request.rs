@@ -1,12 +1,7 @@
-mod builder;
-mod config;
-
-pub use config::*;
+pub use super::config::*;
 use reqwest::Method;
 use serde::{Deserialize, Serialize};
 use std::sync::Arc;
-
-pub use builder::*;
 
 use crate::{
     client::Handle,
