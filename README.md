@@ -23,36 +23,38 @@ use std::env;
 
 #[tokio::main]
 async fn main() {
-  let bearer_token = env::var("DODO_PAYMENTS_BEARER_TOKEN")
-    .expect("DODO_PAYMENTS_BEARER_TOKEN must be set in env variables");
-  let product_id =
-  env::var("DODO_PAYMENTS_PRODUCT_ID").unwrap_or("pdt_ZEuI0QsYnwVA6fc3o1gcu".to_string());
+    let bearer_token = env::var("DODO_PAYMENTS_BEARER_TOKEN")
+        .expect("DODO_PAYMENTS_BEARER_TOKEN must be set in env variables");
+    let product_id =
+        env::var("DODO_PAYMENTS_PRODUCT_ID").unwrap_or("pdt_ZEuI0QsYnwVA6fc3o1gcu".to_string());
 
-  let client = DodoPayments::new(
-    DodoPaymentsConfigBuilder::new()
-      .bearer_token(&bearer_token)
-      .environment("test_mode"),
-  );
+    let client = DodoPayments::new(
+        DodoPaymentsConfigBuilder::new()
+            .bearer_token(&bearer_token)
+            .environment("test_mode"),
+    );
 
-  let response = client
-    .checkout_sessions()
-    .product_cart(vec![ProductItem {
-      product_id: product_id,
-      quantity: 1,
-    }])
-    .send()
-  .await;
+    let response = client
+        .checkout_sessions()
+        .product_cart(vec![ProductItem {
+            product_id: product_id,
+            quantity: 1,
+        }])
+        .send()
+        .await;
 
-  println!("Response: {:?}", response);
+    println!("Response: {:?}", response);
 }
 ```
 
 ## Running example
 
+Check examples directory to understanding usage
+
 ```bash
 export DODO_PAYMENTS_BEARER_TOKEN="<your token>"
 export DODO_PAYMENTS_PRODUCT_ID="<your product id>"
-cargo run --example hello
+cargo run --example checkout_sessions
 ```
 
 ## Roadmap
