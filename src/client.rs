@@ -6,14 +6,17 @@ use crate::{
         change_plan::{ChangePlanBuilder, ProrationBillingMode},
         checkout_sessions::CheckoutSessionsBuilder,
         common::structs::{BillingAddress, ProductItem},
+        create_charge::CreateChargeBuilder,
         create_subscription::{CreateSubscriptionBuilder, CustomerRequest},
         get_invoice::GetInvoiceBuilder,
         get_line_items::GetLineItemsBuilder,
         get_payment_details::GetPaymentDetailsBuilder,
         get_subscription::GetSubscriptionBuilder,
+        get_subscription_usage_history::GetSubscriptionUsageHistoryBuilder,
         list_payments::ListPaymentsBuilder,
         list_subscriptions::ListSubscriptionsBuilder,
         one_time_payments::{self, OneTimePaymentBuilder},
+        update_subscription::UpdateSubscriptionBuilder,
     },
 };
 
@@ -132,5 +135,24 @@ impl DodoPayments {
             proration_billing_mode,
             quantity,
         )
+    }
+
+    pub fn update_subscription(&self, subscription_id: String) -> UpdateSubscriptionBuilder {
+        UpdateSubscriptionBuilder::new(self.handle.clone(), subscription_id)
+    }
+
+    pub fn create_charge(
+        &self,
+        subscription_id: String,
+        product_price: i32,
+    ) -> CreateChargeBuilder {
+        CreateChargeBuilder::new(self.handle.clone(), subscription_id, product_price)
+    }
+
+    pub fn get_subscription_usage_history(
+        &self,
+        subscription_id: String,
+    ) -> GetSubscriptionUsageHistoryBuilder {
+        GetSubscriptionUsageHistoryBuilder::new(self.handle.clone(), subscription_id)
     }
 }

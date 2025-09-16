@@ -9,4 +9,8 @@ pub mod create_subscription;
 pub mod get_subscription;
 pub mod change_plan;
 
+pub mod update_subscription;
+pub mod create_charge;
+pub mod get_subscription_usage_history;
+
 pub mod common;
