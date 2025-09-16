@@ -14,5 +14,5 @@ async fn main() {
 
     let response = client.list_payments().send().await;
 
-    println!("Response: {:?}", response);
+    println!("Response: {:#?}", response);
 }

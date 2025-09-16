@@ -44,5 +44,5 @@ async fn main() {
         .send()
         .await;
 
-    println!("Response: {:?}", response);
+    println!("Response: {:#?}", response);
 }
