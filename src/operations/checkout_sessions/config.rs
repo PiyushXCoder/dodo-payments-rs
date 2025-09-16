@@ -1,4 +1,5 @@
 use serde::{Deserialize, Serialize};
+use serde_valid::Validate;
 use std::collections::HashMap;
 
 #[serde_with::skip_serializing_none]
@@ -27,8 +28,9 @@ pub struct BillingAddress {
 }
 
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Validate)]
 pub struct CheckoutSessionsConfig {
+    #[validate(min_items = 1)]
     pub product_cart: Vec<ProductItem>,
 
     pub customer: Option<CustomerInfo>,

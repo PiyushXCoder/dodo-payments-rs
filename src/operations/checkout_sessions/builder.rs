@@ -78,11 +78,6 @@ impl CheckoutSessionsBuilder {
     }
 
     pub async fn send(self) -> Result<CheckoutSessionsResponse, crate::errors::Error> {
-        if self.config.product_cart.is_empty() {
-            return Err(crate::errors::Error::MissingField(
-                "product_cart cannot be empty".into(),
-            ));
-        }
         Ok(CheckoutSessions::orchestrate(self.handle, self.config).await?)
     }
 }
