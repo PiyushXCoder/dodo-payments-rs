@@ -2,12 +2,16 @@ mod builder;
 mod config;
 
 pub use config::*;
+use reqwest::Method;
 use serde::{Deserialize, Serialize};
 use std::sync::Arc;
 
 pub use builder::*;
 
-use crate::client::Handle;
+use crate::{
+    client::Handle,
+    operations::common::{make_reqwest, parse_response},
+};
 
 pub struct CheckoutSessions;
 
@@ -15,22 +19,11 @@ impl CheckoutSessions {
     pub async fn orchestrate(
         handle: Arc<Handle>,
         config: CheckoutSessionsConfig,
-    ) -> CheckoutSessionsResponse {
+    ) -> Result<CheckoutSessionsResponse, crate::errors::Error> {
         let body = serde_json::to_string(&config).unwrap();
-        let url = format!("{}/checkouts", handle.config.environment.base_url());
-        let response = reqwest::Client::new()
-            .post(url)
-            .header(
-                "Authorization",
-                format!("Bearer {}", handle.config.bearer_token.as_str()),
-            )
-            .header("Content-Type", "application/json")
-            .body(body)
-            .send()
-            .await
-            .unwrap();
-        let text = response.text().await;
-        serde_json::from_str(text.unwrap().as_str()).unwrap()
+        let response = make_reqwest(handle, Method::POST, "/checkouts", Some(body)).await?;
+        let text = response.text().await?;
+        parse_response(&text)
     }
 }
 

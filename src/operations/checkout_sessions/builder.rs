@@ -77,7 +77,7 @@ impl CheckoutSessionsBuilder {
         self
     }
 
-    pub async fn send(self) -> CheckoutSessionsResponse {
-        CheckoutSessions::orchestrate(self.handle, self.config).await
+    pub async fn send(self) -> Result<CheckoutSessionsResponse, crate::errors::Error> {
+        Ok(CheckoutSessions::orchestrate(self.handle, self.config).await?)
     }
 }
