@@ -7,8 +7,8 @@ use std::env;
 async fn main() {
     let bearer_token = env::var("DODO_PAYMENTS_BEARER_TOKEN")
         .expect("DODO_PAYMENTS_BEARER_TOKEN must be set in env variables");
-    let product_id =
-        env::var("DODO_PAYMENTS_PRODUCT_ID").unwrap_or("pdt_ZEuI0QsYnwVA6fc3o1gcu".to_string());
+    let product_id = env::var("DODO_PAYMENTS_PRODUCT_ID")
+        .expect("DODO_PAYMENTS_PRODUCT_ID must be set in env variables");
 
     let client = DodoPayments::new(
         DodoPaymentsConfigBuilder::new()

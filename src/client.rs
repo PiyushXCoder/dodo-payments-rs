@@ -2,7 +2,7 @@ use std::sync::Arc;
 
 use crate::{
     common::Environment,
-    operations::{checkout_sessions::CheckoutSessionsBuilder, list_payments::ListPaymentsBuilder},
+    operations::{checkout_sessions::{CheckoutSessionsBuilder, BillingAddress}, list_payments::ListPaymentsBuilder, one_time_payments, one_time_payments::OneTimePaymentBuilder},
 };
 
 pub struct Handle {
@@ -65,5 +65,9 @@ impl DodoPayments {
 
     pub fn list_payments(&self) -> ListPaymentsBuilder {
         ListPaymentsBuilder::new(self.handle.clone())
+    }
+
+    pub fn one_time_payments(&self, product_cart: Vec<one_time_payments::OneTimeProductCartItemReq>, customer: one_time_payments::CustomerRequest, billing: BillingAddress) -> OneTimePaymentBuilder {
+        OneTimePaymentBuilder::new(self.handle.clone(), product_cart, customer, billing)
     }
 }

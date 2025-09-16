@@ -18,13 +18,13 @@ pub struct CustomerInfo {
 }
 
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct BillingAddress {
     pub street: String,
     pub city: String,
     pub state: String,
     pub country: String,
-    pub zip_code: String,
+    pub zipcode: String,
 }
 
 #[serde_with::skip_serializing_none]
