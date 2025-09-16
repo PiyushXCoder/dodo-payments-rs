@@ -1,6 +1,9 @@
 use std::sync::Arc;
 
-use crate::{common::Environment, operations::checkout_sessions::CheckoutSessionsBuilder};
+use crate::{
+    common::Environment,
+    operations::{checkout_sessions::CheckoutSessionsBuilder, list_payments::ListPaymentsBuilder},
+};
 
 pub struct Handle {
     pub(crate) config: DodoPaymentsConfig,
@@ -58,5 +61,9 @@ impl DodoPayments {
 
     pub fn checkout_sessions(&self) -> CheckoutSessionsBuilder {
         CheckoutSessionsBuilder::new(self.handle.clone())
+    }
+
+    pub fn list_payments(&self) -> ListPaymentsBuilder {
+        ListPaymentsBuilder::new(self.handle.clone())
     }
 }
