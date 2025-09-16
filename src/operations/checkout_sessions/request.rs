@@ -1,6 +1,6 @@
 pub use super::config::*;
+use super::*;
 use reqwest::Method;
-use serde::{Deserialize, Serialize};
 use std::sync::Arc;
 
 use crate::{
@@ -20,10 +20,4 @@ impl CheckoutSessions {
         let text = response.text().await?;
         parse_response(&text)
     }
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct CheckoutSessionsResponse {
-    pub session_id: String,
-    pub checkout_url: String,
 }
