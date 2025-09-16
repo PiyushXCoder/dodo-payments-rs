@@ -59,6 +59,19 @@ cargo run --example checkout_sessions
 
 ## Roadmap
 
-- [ ] Checkout
-- [ ] Customer Portal
-- [ ] Webhook
+- [x] Checkout Session
+- [x] Payments
+- [ ] Subscriptions
+- [ ] Discounts
+- [ ] Licenses
+- [ ] Customers
+- [ ] Products
+- [ ] Addons
+- [ ] Meters
+- [ ] Usage Events
+- [ ] Refunds
+- [ ] Disputes
+- [ ] Payouts
+- [ ] Brands
+- [ ] Webhooks
+- [ ] Miscellaneous
