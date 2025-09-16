@@ -9,6 +9,7 @@ use crate::{
         one_time_payments::{self, OneTimePaymentBuilder},
         get_payment_details::GetPaymentDetailsBuilder,
         get_invoice::GetInvoiceBuilder,
+        get_line_items::GetLineItemsBuilder,
     },
 };
 
@@ -89,5 +90,9 @@ impl DodoPayments {
 
     pub fn get_invoice(&self, payment_id: String) -> GetInvoiceBuilder {
         GetInvoiceBuilder::new(self.handle.clone(), payment_id)
+    }
+
+    pub fn get_line_items(&self, payment_id: String) -> GetLineItemsBuilder {
+        GetLineItemsBuilder::new(self.handle.clone(), payment_id)
     }
 }
