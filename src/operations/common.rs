@@ -16,11 +16,11 @@ pub fn parse_response<'a, T: de::Deserialize<'a>>(body: &'a str) -> Result<T, Er
     let response = serde_json::from_str::<T>(body);
     match response {
         Ok(v) => Ok(v),
-        Err(e) => {
+        Err(_) => {
             let error_response = serde_json::from_str::<ErrorResponse>(body);
             match error_response {
                 Ok(err_resp) => Err(Error::ErrorResponse(err_resp)),
-                Err(_) => Err(Error::SerdeJson(e)),
+                Err(_) => Err(Error::CustomErrorResponse(body.to_string())),
             }
         }
     }
