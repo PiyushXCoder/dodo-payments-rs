@@ -14,6 +14,8 @@ async fn main() {
         .expect("DODO_PAYMENTS_BEARER_TOKEN must be set in env variables");
     let product_id = env::var("DODO_PAYMENTS_PRODUCT_ID")
         .expect("DODO_PAYMENTS_PRODUCT_ID must be set in env variables");
+    let customer_id = env::var("DODO_PAYMENTS_CUSTOMER_ID")
+        .expect("DODO_PAYMENTS_CUSTOMER_ID must be set in env variables");
 
     let client = DodoPayments::new(
         DodoPaymentsConfigBuilder::new()
@@ -27,9 +29,7 @@ async fn main() {
         amount: Some(100),
     }];
 
-    let customer = CustomerRequest::AttachExisting(AttachExistingCustomer {
-        customer_id: "cus_GT2zxxOOwZ6LxWiwWg79d".to_string(),
-    });
+    let customer = CustomerRequest::AttachExisting(AttachExistingCustomer { customer_id });
 
     let billing = BillingAddress {
         street: "123 Main St".to_string(),
