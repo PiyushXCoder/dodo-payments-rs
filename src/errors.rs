@@ -8,4 +8,6 @@ pub enum Error {
     ErrorResponse(crate::operations::common::ErrorResponse),
     #[error("Custom error: {0}")]
     Custom(String),
+    #[error("Missing field: {0}")]
+    MissingField(String),
 }

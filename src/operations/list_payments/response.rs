@@ -5,6 +5,11 @@ use serde_json::Value;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ListPaymentsResponse {
+    pub items: Vec<Item>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Item {
     pub brand_id: String,
     pub created_at: DateTime<Utc>,
     pub currency: Currency,
