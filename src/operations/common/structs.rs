@@ -1,5 +1,6 @@
 use derive_more::Display;
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Serialize, Deserialize, Clone)]
@@ -444,3 +445,52 @@ pub enum CountryCodeAlpha2 {
     ZM,
     ZW,
 }
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct AddonCartResponseItem {
+    pub addon_id: String,
+    pub quantity: i32,
+}
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct CustomerLimitedDetailsResponse {
+    pub customer_id: String,
+    pub email: String,
+    pub name: String,
+}
+
+pub type Metadata = HashMap<String, String>;
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct MeterCartResponseItem {
+    pub currency: Currency,
+    pub description: Option<String>,
+    pub free_threshold: i64,
+    pub measurement_unit: String,
+    pub meter_id: String,
+    pub name: String,
+    pub price_per_unit: String, // Using String as per OpenAPI example "10.50"
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(rename_all = "snake_case")]
+pub enum SubscriptionStatus {
+    Pending,
+    Active,
+    OnHold,
+    Cancelled,
+    Failed,
+    Expired,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub enum TimeInterval {
+    Day,
+    Week,
+    Month,
+    Year,
+}
+

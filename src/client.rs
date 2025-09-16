@@ -12,6 +12,7 @@ use crate::{
         list_payments::ListPaymentsBuilder,
         list_subscriptions::ListSubscriptionsBuilder,
         one_time_payments::{self, OneTimePaymentBuilder},
+        get_subscription::GetSubscriptionBuilder,
     },
 };
 
@@ -59,6 +60,20 @@ impl DodoPaymentsConfigBuilder {
 
 pub struct DodoPayments {
     handle: Arc<Handle>,
+}
+
+pub struct Subscriptions {
+    handle: Arc<Handle>,
+}
+
+impl Subscriptions {
+    pub fn new(handle: Arc<Handle>) -> Self {
+        Self { handle }
+    }
+
+    pub fn retrieve(&self, subscription_id: String) -> GetSubscriptionBuilder {
+        GetSubscriptionBuilder::new(self.handle.clone(), subscription_id)
+    }
 }
 
 impl DodoPayments {
@@ -116,5 +131,9 @@ impl DodoPayments {
             customer,
             billing,
         )
+    }
+
+    pub fn subscriptions(&self) -> Subscriptions {
+        Subscriptions::new(self.handle.clone())
     }
 }
