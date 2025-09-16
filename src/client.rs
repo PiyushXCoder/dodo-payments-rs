@@ -7,6 +7,7 @@ use crate::{
         common::structs::{BillingAddress, ProductItem},
         list_payments::ListPaymentsBuilder,
         one_time_payments::{self, OneTimePaymentBuilder},
+        get_payment_details::GetPaymentDetailsBuilder,
     },
 };
 
@@ -79,5 +80,9 @@ impl DodoPayments {
         billing: BillingAddress,
     ) -> OneTimePaymentBuilder {
         OneTimePaymentBuilder::new(self.handle.clone(), product_cart, customer, billing)
+    }
+
+    pub fn get_payment_details(&self, payment_id: String) -> GetPaymentDetailsBuilder {
+        GetPaymentDetailsBuilder::new(self.handle.clone(), payment_id)
     }
 }
