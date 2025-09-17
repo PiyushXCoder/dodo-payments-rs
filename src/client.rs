@@ -5,7 +5,7 @@ use crate::{
     operations::{
         change_plan::{ChangePlanBuilder, ProrationBillingMode},
         checkout_sessions::CheckoutSessionsBuilder,
-        common::structs::{BillingAddress, ProductItem},
+        common::structs::{BillingAddress, ProductItem, DiscountType},
         create_charge::CreateChargeBuilder,
         create_subscription::{CreateSubscriptionBuilder, CustomerRequest},
         get_invoice::GetInvoiceBuilder,
@@ -18,6 +18,7 @@ use crate::{
         one_time_payments::{self, OneTimePaymentBuilder},
         update_subscription::UpdateSubscriptionBuilder,
         list_discounts::ListDiscountsBuilder,
+        create_discount::{CreateDiscountBuilder, CreateDiscountResponse},
     },
 };
 
@@ -159,5 +160,9 @@ impl DodoPayments {
 
     pub fn list_discounts(&self) -> ListDiscountsBuilder {
         ListDiscountsBuilder::new(self.handle.clone())
+    }
+
+    pub fn create_discount(&self, amount: i32, discount_type: DiscountType) -> CreateDiscountBuilder {
+        CreateDiscountBuilder::new(self.handle.clone(), amount, discount_type)
     }
 }

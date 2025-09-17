@@ -13,6 +13,7 @@ pub mod update_subscription;
 pub mod create_charge;
 pub mod get_subscription_usage_history;
 
+pub mod create_discount;
 pub mod list_discounts;
 
 pub mod common;
