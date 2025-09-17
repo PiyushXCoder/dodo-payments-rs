@@ -546,3 +546,27 @@ pub enum TimeInterval {
     Month,
     Year,
 }
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(rename_all = "snake_case")]
+pub enum DiscountType {
+    Percentage,
+}
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct DiscountResponse {
+    pub amount: i32,
+    pub business_id: String,
+    pub code: String,
+    pub created_at: String,
+    pub discount_id: String,
+    pub expires_at: Option<String>,
+    pub name: Option<String>,
+    pub restricted_to: Vec<String>,
+    pub subscription_cycles: Option<i32>,
+    pub times_used: i32,
+    #[serde(rename = "type")]
+    pub discount_type: DiscountType,
+    pub usage_limit: Option<i32>,
+}

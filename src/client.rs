@@ -17,6 +17,7 @@ use crate::{
         list_subscriptions::ListSubscriptionsBuilder,
         one_time_payments::{self, OneTimePaymentBuilder},
         update_subscription::UpdateSubscriptionBuilder,
+        list_discounts::ListDiscountsBuilder,
     },
 };
 
@@ -154,5 +155,9 @@ impl DodoPayments {
         subscription_id: String,
     ) -> GetSubscriptionUsageHistoryBuilder {
         GetSubscriptionUsageHistoryBuilder::new(self.handle.clone(), subscription_id)
+    }
+
+    pub fn list_discounts(&self) -> ListDiscountsBuilder {
+        ListDiscountsBuilder::new(self.handle.clone())
     }
 }
