@@ -21,6 +21,7 @@ use crate::{
         create_discount::{CreateDiscountBuilder, CreateDiscountResponse},
         validate_discount::ValidateDiscountBuilder,
         update_discount::UpdateDiscountBuilder,
+        delete_discount::DeleteDiscountBuilder,
     },
 };
 
@@ -174,5 +175,9 @@ impl DodoPayments {
 
     pub fn update_discount(&self, discount_id: String) -> UpdateDiscountBuilder {
         UpdateDiscountBuilder::new(self.handle.clone(), discount_id)
+    }
+
+    pub fn delete_discount(&self, discount_id: String) -> DeleteDiscountBuilder {
+        DeleteDiscountBuilder::new(self.handle.clone(), discount_id)
     }
 }
