@@ -1,10 +1,5 @@
 use dodo_payments::{
-    DodoPayments,
-    client::DodoPaymentsConfigBuilder,
-    operations::{
-        common::structs::{BillingAddress, CountryCodeAlpha2, ProductItem},
-        one_time_payments::{AttachExistingCustomer, CustomerRequest},
-    },
+    DodoPayments, client::DodoPaymentsConfigBuilder, operations::common::structs::*,
 };
 use std::env;
 

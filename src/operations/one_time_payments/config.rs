@@ -5,23 +5,10 @@ use std::collections::HashMap;
 
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Serialize, Deserialize, Clone)]
-pub struct AttachExistingCustomer {
-    pub customer_id: String,
-}
-
-#[serde_with::skip_serializing_none]
-#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct NewCustomer {
     pub name: String,
     pub email: String,
     pub phone_number: Option<String>,
-}
-
-#[derive(Debug, Serialize, Deserialize, Clone)]
-#[serde(untagged)]
-pub enum CustomerRequest {
-    AttachExisting(AttachExistingCustomer),
-    New(NewCustomer),
 }
 
 #[serde_with::skip_serializing_none]

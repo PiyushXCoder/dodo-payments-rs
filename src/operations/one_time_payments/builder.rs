@@ -1,9 +1,6 @@
 use super::super::common::structs::*;
 use super::*;
-use crate::{
-    client::Handle,
-    operations::one_time_payments::{CreateOneTimePaymentResponse, CustomerRequest},
-};
+use crate::{client::Handle, operations::one_time_payments::CreateOneTimePaymentResponse};
 use std::{collections::HashMap, sync::Arc};
 
 pub struct OneTimePaymentBuilder {

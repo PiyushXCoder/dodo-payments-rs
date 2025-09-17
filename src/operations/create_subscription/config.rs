@@ -15,19 +15,6 @@ pub struct AttachAddonReq {
 
 #[skip_serializing_none]
 #[derive(Debug, Serialize, Deserialize, Clone)]
-pub struct AttachExistingCustomer {
-    pub customer_id: String,
-}
-
-#[derive(Debug, Serialize, Deserialize, Clone)]
-#[serde(untagged)]
-pub enum CustomerRequest {
-    AttachExisting(AttachExistingCustomer),
-    New(CustomerInfo),
-}
-
-#[skip_serializing_none]
-#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct OnDemandSubscriptionReq {
     pub mandate_only: bool,
     pub adaptive_currency_fees_inclusive: Option<bool>,

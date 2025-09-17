@@ -1,8 +1,5 @@
 use dodo_payments::{
-    DodoPayments,
-    client::DodoPaymentsConfigBuilder,
-    operations::common::structs::*,
-    operations::create_subscription::{AttachExistingCustomer, CustomerRequest},
+    DodoPayments, client::DodoPaymentsConfigBuilder, operations::common::structs::*,
 };
 use std::env;
 

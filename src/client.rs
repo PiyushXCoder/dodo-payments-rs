@@ -5,23 +5,23 @@ use crate::{
     operations::{
         change_plan::{ChangePlanBuilder, ProrationBillingMode},
         checkout_sessions::CheckoutSessionsBuilder,
-        common::structs::{BillingAddress, ProductItem, DiscountType},
+        common::structs::*,
         create_charge::CreateChargeBuilder,
-        create_subscription::{CreateSubscriptionBuilder, CustomerRequest},
+        create_discount::CreateDiscountBuilder,
+        create_subscription::CreateSubscriptionBuilder,
+        delete_discount::DeleteDiscountBuilder,
         get_invoice::GetInvoiceBuilder,
         get_line_items::GetLineItemsBuilder,
         get_payment_details::GetPaymentDetailsBuilder,
         get_subscription::GetSubscriptionBuilder,
         get_subscription_usage_history::GetSubscriptionUsageHistoryBuilder,
+        list_discounts::ListDiscountsBuilder,
         list_payments::ListPaymentsBuilder,
         list_subscriptions::ListSubscriptionsBuilder,
-        one_time_payments::{self, OneTimePaymentBuilder},
-        update_subscription::UpdateSubscriptionBuilder,
-        list_discounts::ListDiscountsBuilder,
-        create_discount::{CreateDiscountBuilder, CreateDiscountResponse},
-        validate_discount::ValidateDiscountBuilder,
+        one_time_payments::OneTimePaymentBuilder,
         update_discount::UpdateDiscountBuilder,
-        delete_discount::DeleteDiscountBuilder,
+        update_subscription::UpdateSubscriptionBuilder,
+        validate_discount::ValidateDiscountBuilder,
     },
 };
 
@@ -90,7 +90,7 @@ impl DodoPayments {
     pub fn one_time_payments(
         &self,
         product_cart: Vec<ProductItem>,
-        customer: one_time_payments::CustomerRequest,
+        customer: CustomerRequest,
         billing: BillingAddress,
     ) -> OneTimePaymentBuilder {
         OneTimePaymentBuilder::new(self.handle.clone(), product_cart, customer, billing)
@@ -165,7 +165,11 @@ impl DodoPayments {
         ListDiscountsBuilder::new(self.handle.clone())
     }
 
-    pub fn create_discount(&self, amount: i32, discount_type: DiscountType) -> CreateDiscountBuilder {
+    pub fn create_discount(
+        &self,
+        amount: i32,
+        discount_type: DiscountType,
+    ) -> CreateDiscountBuilder {
         CreateDiscountBuilder::new(self.handle.clone(), amount, discount_type)
     }
 

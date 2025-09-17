@@ -570,3 +570,16 @@ pub struct DiscountResponse {
     pub discount_type: DiscountType,
     pub usage_limit: Option<i32>,
 }
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct AttachExistingCustomer {
+    pub customer_id: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(untagged)]
+pub enum CustomerRequest {
+    AttachExisting(AttachExistingCustomer),
+    New(CustomerInfo),
+}
