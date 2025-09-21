@@ -189,4 +189,8 @@ impl DodoPayments {
         ActivateLicenseBuilder::new(self.handle.clone(), license_key, name)
     }
 
+    pub fn deactivate_license(&self, license_key: String, license_key_instance_id: String) -> DeactivateLicenseBuilder {
+        DeactivateLicenseBuilder::new(self.handle.clone(), license_key, license_key_instance_id)
+    }
+
 }

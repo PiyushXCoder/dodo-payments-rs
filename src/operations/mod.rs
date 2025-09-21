@@ -22,4 +22,7 @@ pub mod list_discounts;
 pub mod activate_license;
 pub use activate_license::*;
 
+pub mod deactivate_license;
+pub use deactivate_license::*;
+
 pub mod common;
