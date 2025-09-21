@@ -34,4 +34,7 @@ pub use get_license_keys::*;
 pub mod get_license_key;
 pub use get_license_key::*;
 
+pub mod update_license_key;
+pub use update_license_key::*;
+
 pub mod common;
