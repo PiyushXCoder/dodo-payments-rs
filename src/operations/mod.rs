@@ -25,4 +25,7 @@ pub use activate_license::*;
 pub mod deactivate_license;
 pub use deactivate_license::*;
 
+pub mod validate_license;
+pub use validate_license::*;
+
 pub mod common;
