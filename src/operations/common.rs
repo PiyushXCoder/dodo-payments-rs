@@ -13,6 +13,11 @@ pub struct ErrorResponse {
 }
 
 pub fn parse_response<'a, T: de::Deserialize<'a>>(body: &'a str) -> Result<T, Error> {
+    let mut body = body.trim();
+    if body.is_empty() {
+        body = "{}";
+    }
+
     let response = serde_json::from_str::<T>(body);
     match response {
         Ok(v) => Ok(v),
