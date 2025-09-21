@@ -1,6 +1,6 @@
 pub use super::config::*;
 use super::*;
-use reqwest::{Method, Url};
+use reqwest::Method;
 use std::sync::Arc;
 
 use crate::{
@@ -15,7 +15,10 @@ impl ListDiscounts {
         handle: Arc<Handle>,
         config: ListDiscountsConfig,
     ) -> Result<ListDiscountsResponse, crate::errors::Error> {
-        let mut url = reqwest::Url::parse(&handle.config.environment.base_url()).unwrap().join("/discounts").unwrap();
+        let mut url = reqwest::Url::parse(&handle.config.environment.base_url())
+            .unwrap()
+            .join("/discounts")
+            .unwrap();
         let mut query_params = Vec::new();
 
         if let Some(page_size) = config.page_size {
