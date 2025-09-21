@@ -63,7 +63,7 @@ cargo run --example checkout_sessions
 - [x] Payments
 - [x] Subscriptions
 - [x] Discounts
-- [ ] Licenses
+- [x] Licenses
 - [ ] Customers
 - [ ] Products
 - [ ] Addons
