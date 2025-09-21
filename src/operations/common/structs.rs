@@ -547,6 +547,16 @@ pub enum TimeInterval {
     Year,
 }
 
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct LicenseKeyInstance {
+    pub business_id: String,
+    pub created_at: String,
+    pub id: String,
+    pub license_key_id: String,
+    pub name: String,
+}
+
 #[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "snake_case")]
 pub enum DiscountType {

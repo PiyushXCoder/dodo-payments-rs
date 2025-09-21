@@ -3,14 +3,20 @@ use std::sync::Arc;
 use crate::{
     common::Environment,
     operations::{
+        activate_license::ActivateLicenseBuilder,
         change_plan::{ChangePlanBuilder, ProrationBillingMode},
         checkout_sessions::CheckoutSessionsBuilder,
         common::structs::*,
         create_charge::CreateChargeBuilder,
         create_discount::CreateDiscountBuilder,
         create_subscription::CreateSubscriptionBuilder,
+        deactivate_license::DeactivateLicenseBuilder,
         delete_discount::DeleteDiscountBuilder,
         get_invoice::GetInvoiceBuilder,
+        get_license_key::GetLicenseKeyBuilder,
+        get_license_key_instance::GetLicenseKeyInstanceBuilder,
+        get_license_key_instances::GetLicenseKeyInstancesBuilder,
+        get_license_keys::GetLicenseKeysBuilder,
         get_line_items::GetLineItemsBuilder,
         get_payment_details::GetPaymentDetailsBuilder,
         get_subscription::GetSubscriptionBuilder,
@@ -20,8 +26,11 @@ use crate::{
         list_subscriptions::ListSubscriptionsBuilder,
         one_time_payments::OneTimePaymentBuilder,
         update_discount::UpdateDiscountBuilder,
+        update_license_key::UpdateLicenseKeyBuilder,
+        update_license_key_instance::UpdateLicenseKeyInstanceBuilder,
         update_subscription::UpdateSubscriptionBuilder,
         validate_discount::ValidateDiscountBuilder,
+        validate_license::ValidateLicenseBuilder,
     },
 };
 
@@ -189,7 +198,11 @@ impl DodoPayments {
         ActivateLicenseBuilder::new(self.handle.clone(), license_key, name)
     }
 
-    pub fn deactivate_license(&self, license_key: String, license_key_instance_id: String) -> DeactivateLicenseBuilder {
+    pub fn deactivate_license(
+        &self,
+        license_key: String,
+        license_key_instance_id: String,
+    ) -> DeactivateLicenseBuilder {
         DeactivateLicenseBuilder::new(self.handle.clone(), license_key, license_key_instance_id)
     }
 
@@ -217,7 +230,11 @@ impl DodoPayments {
         GetLicenseKeyInstanceBuilder::new(self.handle.clone(), id)
     }
 
-    pub fn update_license_key_instance(&self, id: String, name: String) -> UpdateLicenseKeyInstanceBuilder {
+    pub fn update_license_key_instance(
+        &self,
+        id: String,
+        name: String,
+    ) -> UpdateLicenseKeyInstanceBuilder {
         UpdateLicenseKeyInstanceBuilder::new(self.handle.clone(), id, name)
     }
 }

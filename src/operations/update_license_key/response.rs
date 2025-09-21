@@ -1,3 +1,3 @@
-use super::super::get_license_keys::response::LicenseKeyResponse;
+use super::super::common::structs::*;
 
-pub type UpdateLicenseKeyResponse = LicenseKeyResponse;
+pub type UpdateLicenseKeyResponse = LicenseKeyInstance;
