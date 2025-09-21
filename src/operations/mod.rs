@@ -43,4 +43,7 @@ pub use get_license_key_instances::*;
 pub mod get_license_key_instance;
 pub use get_license_key_instance::*;
 
+pub mod update_license_key_instance;
+pub use update_license_key_instance::*;
+
 pub mod common;
