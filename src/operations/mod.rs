@@ -19,4 +19,7 @@ pub mod create_discount;
 pub mod validate_discount;
 pub mod list_discounts;
 
+pub mod activate_license;
+pub use activate_license::*;
+
 pub mod common;

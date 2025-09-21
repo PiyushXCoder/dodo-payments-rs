@@ -184,4 +184,9 @@ impl DodoPayments {
     pub fn delete_discount(&self, discount_id: String) -> DeleteDiscountBuilder {
         DeleteDiscountBuilder::new(self.handle.clone(), discount_id)
     }
+
+    pub fn activate_license(&self, license_key: String, name: String) -> ActivateLicenseBuilder {
+        ActivateLicenseBuilder::new(self.handle.clone(), license_key, name)
+    }
+
 }
