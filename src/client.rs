@@ -201,4 +201,8 @@ impl DodoPayments {
         GetLicenseKeysBuilder::new(self.handle.clone())
     }
 
+    pub fn get_license_key(&self, id: String) -> GetLicenseKeyBuilder {
+        GetLicenseKeyBuilder::new(self.handle.clone(), id)
+    }
+
 }
