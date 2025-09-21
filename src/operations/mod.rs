@@ -28,4 +28,7 @@ pub use deactivate_license::*;
 pub mod validate_license;
 pub use validate_license::*;
 
+pub mod get_license_keys;
+pub use get_license_keys::*;
+
 pub mod common;
