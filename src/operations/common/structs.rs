@@ -874,3 +874,32 @@ pub struct RefundResponse {
     pub reason: Option<String>,
 }
 
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct ListDisputeResponse {
+    pub dispute_id: String,
+    pub payment_id: String,
+    pub business_id: String,
+    pub amount: String,
+    pub currency: String,
+    pub dispute_status: DisputeStatus,
+    pub dispute_stage: DisputeStage,
+    pub created_at: String,
+}
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct GetDisputeResponse {
+    pub dispute_id: String,
+    pub payment_id: String,
+    pub business_id: String,
+    pub amount: String,
+    pub currency: String,
+    pub dispute_status: DisputeStatus,
+    pub dispute_stage: DisputeStage,
+    pub created_at: String,
+    pub customer: CustomerLimitedDetailsResponse,
+    pub reason: Option<String>,
+    pub remarks: Option<String>,
+}
+
