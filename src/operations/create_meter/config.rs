@@ -11,7 +11,6 @@ pub struct CreateMeterConfig {
     #[validate(min_length = 1)]
     pub event_name: String,
     
-    #[validate]
     pub aggregation: MeterAggregation,
     
     #[validate(min_length = 1)]
