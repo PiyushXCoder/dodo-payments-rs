@@ -51,6 +51,7 @@ use crate::{
         create_addon::CreateAddonBuilder,
         list_addons::ListAddonsBuilder,
         get_addon::GetAddonBuilder,
+        update_addon::UpdateAddonBuilder,
     },
 };
 
@@ -356,6 +357,10 @@ impl DodoPayments {
 
     pub fn get_addon(&self, addon_id: String) -> GetAddonBuilder {
         GetAddonBuilder::new(self.handle.clone(), addon_id)
+    }
+
+    pub fn update_addon(&self, addon_id: String) -> UpdateAddonBuilder {
+        UpdateAddonBuilder::new(self.handle.clone(), addon_id)
     }
 
 }
