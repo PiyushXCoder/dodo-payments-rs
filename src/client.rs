@@ -12,6 +12,7 @@ use crate::{
         create_customer_portal_session::CreateCustomerPortalSessionBuilder,
         list_customers::ListCustomersBuilder,
         get_customer::GetCustomerBuilder,
+        get_customer_wallets::GetCustomerWalletsBuilder,
         create_discount::CreateDiscountBuilder,
         create_subscription::CreateSubscriptionBuilder,
         deactivate_license::DeactivateLicenseBuilder,
@@ -98,6 +99,10 @@ impl DodoPayments {
 
     pub fn create_customer_portal_session(&self, customer_id: String) -> CreateCustomerPortalSessionBuilder {
         CreateCustomerPortalSessionBuilder::new(self.handle.clone(), customer_id)
+    }
+
+    pub fn get_customer_wallets(&self, customer_id: String) -> GetCustomerWalletsBuilder {
+        GetCustomerWalletsBuilder::new(self.handle.clone(), customer_id)
     }
 
     pub fn create_customer(&self, email: String, name: String) -> CreateCustomerBuilder {
