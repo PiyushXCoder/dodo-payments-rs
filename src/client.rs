@@ -42,6 +42,7 @@ use crate::{
         validate_license::ValidateLicenseBuilder,
         list_products::ListProductsBuilder,
         create_product::CreateProductBuilder,
+        get_product::GetProductBuilder,
     },
 };
 
@@ -299,6 +300,10 @@ impl DodoPayments {
 
     pub fn create_product(&self, tax_category: TaxCategory, price: Price) -> CreateProductBuilder {
         CreateProductBuilder::new(self.handle.clone(), tax_category, price)
+    }
+
+    pub fn get_product(&self, id: String) -> GetProductBuilder {
+        GetProductBuilder::new(self.handle.clone(), id)
     }
 
 }
