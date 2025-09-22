@@ -24,6 +24,7 @@ pub mod get_subscription_usage_history;
 
 pub mod delete_discount;
 pub mod update_discount;
+pub mod update_brand;
 pub mod create_discount;
 pub mod validate_discount;
 pub mod list_discounts;

@@ -39,6 +39,7 @@ use crate::{
         one_time_payments::OneTimePaymentBuilder,
         patch_customer::PatchCustomerBuilder,
         unarchive_product::UnarchiveProductBuilder,
+        update_brand::UpdateBrandBuilder,
         update_discount::UpdateDiscountBuilder,
         update_license_key::UpdateLicenseKeyBuilder,
         update_license_key_instance::UpdateLicenseKeyInstanceBuilder,
@@ -279,6 +280,10 @@ impl DodoPayments {
 
     pub fn update_discount(&self, discount_id: String) -> UpdateDiscountBuilder {
         UpdateDiscountBuilder::new(self.handle.clone(), discount_id)
+    }
+
+    pub fn update_brand(&self, brand_id: String) -> UpdateBrandBuilder {
+        UpdateBrandBuilder::new(self.handle.clone(), brand_id)
     }
 
     pub fn delete_discount(&self, discount_id: String) -> DeleteDiscountBuilder {
