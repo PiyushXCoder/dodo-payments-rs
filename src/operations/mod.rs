@@ -5,6 +5,7 @@ pub mod get_customer;
 pub mod get_customer_wallets;
 pub mod list_customer_wallet_ledger_entries;
 pub mod list_customers;
+pub mod patch_customer;
 pub mod get_invoice;
 pub mod get_line_items;
 pub mod get_payment_details;

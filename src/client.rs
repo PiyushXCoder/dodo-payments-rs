@@ -14,6 +14,7 @@ use crate::{
         get_customer::GetCustomerBuilder,
         get_customer_wallets::GetCustomerWalletsBuilder,
         list_customer_wallet_ledger_entries::ListCustomerWalletLedgerEntriesBuilder,
+        patch_customer::PatchCustomerBuilder,
         create_discount::CreateDiscountBuilder,
         create_subscription::CreateSubscriptionBuilder,
         deactivate_license::DeactivateLicenseBuilder,
@@ -120,6 +121,10 @@ impl DodoPayments {
 
     pub fn get_customer(&self, customer_id: String) -> GetCustomerBuilder {
         GetCustomerBuilder::new(self.handle.clone(), customer_id)
+    }
+
+    pub fn patch_customer(&self, customer_id: String) -> PatchCustomerBuilder {
+        PatchCustomerBuilder::new(self.handle.clone(), customer_id)
     }
 
     pub fn list_payments(&self) -> ListPaymentsBuilder {
