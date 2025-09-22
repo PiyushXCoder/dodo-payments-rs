@@ -593,3 +593,14 @@ pub enum CustomerRequest {
     AttachExisting(AttachExistingCustomer),
     New(CustomerInfo),
 }
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CustomerInfoFull {
+    pub business_id: String,
+    pub created_at: String,
+    pub customer_id: String,
+    pub email: String,
+    pub name: String,
+    pub phone_number: Option<String>,
+}

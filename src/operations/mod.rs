@@ -1,4 +1,5 @@
 pub mod checkout_sessions;
+pub mod create_customer;
 pub mod get_invoice;
 pub mod get_line_items;
 pub mod get_payment_details;

@@ -8,6 +8,7 @@ use crate::{
         checkout_sessions::CheckoutSessionsBuilder,
         common::structs::*,
         create_charge::CreateChargeBuilder,
+        create_customer::CreateCustomerBuilder,
         create_discount::CreateDiscountBuilder,
         create_subscription::CreateSubscriptionBuilder,
         deactivate_license::DeactivateLicenseBuilder,
@@ -90,6 +91,10 @@ impl DodoPayments {
 
     pub fn checkout_sessions(&self, product_cart: Vec<ProductItem>) -> CheckoutSessionsBuilder {
         CheckoutSessionsBuilder::new(self.handle.clone(), product_cart)
+    }
+
+    pub fn create_customer(&self, email: String, name: String) -> CreateCustomerBuilder {
+        CreateCustomerBuilder::new(self.handle.clone(), email, name)
     }
 
     pub fn list_payments(&self) -> ListPaymentsBuilder {
