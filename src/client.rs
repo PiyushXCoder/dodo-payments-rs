@@ -10,6 +10,7 @@ use crate::{
         create_charge::CreateChargeBuilder,
         create_customer::CreateCustomerBuilder,
         list_customers::ListCustomersBuilder,
+        get_customer::GetCustomerBuilder,
         create_discount::CreateDiscountBuilder,
         create_subscription::CreateSubscriptionBuilder,
         deactivate_license::DeactivateLicenseBuilder,
@@ -100,6 +101,10 @@ impl DodoPayments {
 
     pub fn list_customers(&self) -> ListCustomersBuilder {
         ListCustomersBuilder::new(self.handle.clone())
+    }
+
+    pub fn get_customer(&self, customer_id: String) -> GetCustomerBuilder {
+        GetCustomerBuilder::new(self.handle.clone(), customer_id)
     }
 
     pub fn list_payments(&self) -> ListPaymentsBuilder {
