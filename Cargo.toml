@@ -1,8 +1,14 @@
 [package]
 name = "dodo_payments"
+description = "This is Unoffical SDK of dodopayments.com"
+authors = ["Piyush Raj <piyushxcoder@gmail.com>"]
 version = "0.1.0"
 edition = "2024"
 exclude = ["./examples"]
+license = "GPL-3.0-only"
+readme = "README.md"
+repository = "https://github.com/PiyushXCoder/dodo-payments-rs"
+keywords = ["dodopayments", "payment"]
 
 [dependencies]
 chrono = { version = "0.4.42", features = ["serde"] }
