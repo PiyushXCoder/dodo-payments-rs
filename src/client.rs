@@ -40,6 +40,7 @@ use crate::{
         patch_customer::PatchCustomerBuilder,
         unarchive_product::UnarchiveProductBuilder,
         update_brand::UpdateBrandBuilder,
+        update_brand_images::UpdateBrandImagesBuilder,
         update_discount::UpdateDiscountBuilder,
         update_license_key::UpdateLicenseKeyBuilder,
         update_license_key_instance::UpdateLicenseKeyInstanceBuilder,
@@ -284,6 +285,10 @@ impl DodoPayments {
 
     pub fn update_brand(&self, brand_id: String) -> UpdateBrandBuilder {
         UpdateBrandBuilder::new(self.handle.clone(), brand_id)
+    }
+
+    pub fn update_brand_images(&self, brand_id: String) -> UpdateBrandImagesBuilder {
+        UpdateBrandImagesBuilder::new(self.handle.clone(), brand_id)
     }
 
     pub fn delete_discount(&self, discount_id: String) -> DeleteDiscountBuilder {
