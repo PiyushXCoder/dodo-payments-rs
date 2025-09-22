@@ -10,6 +10,8 @@ use crate::{
         create_charge::CreateChargeBuilder,
         create_customer::CreateCustomerBuilder,
         create_customer_portal_session::CreateCustomerPortalSessionBuilder,
+        create_customer_wallet_ledger_entry::CreateCustomerWalletLedgerEntryBuilder,
+        create_customer_wallet_ledger_entry::CustomerLedgerEntryType,
         list_customers::ListCustomersBuilder,
         get_customer::GetCustomerBuilder,
         get_customer_wallets::GetCustomerWalletsBuilder,
@@ -101,6 +103,22 @@ impl DodoPayments {
 
     pub fn create_customer_portal_session(&self, customer_id: String) -> CreateCustomerPortalSessionBuilder {
         CreateCustomerPortalSessionBuilder::new(self.handle.clone(), customer_id)
+    }
+
+    pub fn create_customer_wallet_ledger_entry(
+        &self,
+        customer_id: String,
+        amount: i64,
+        currency: Currency,
+        entry_type: CustomerLedgerEntryType,
+    ) -> CreateCustomerWalletLedgerEntryBuilder {
+        CreateCustomerWalletLedgerEntryBuilder::new(
+            self.handle.clone(),
+            customer_id,
+            amount,
+            currency,
+            entry_type,
+        )
     }
 
     pub fn get_customer_wallets(&self, customer_id: String) -> GetCustomerWalletsBuilder {
