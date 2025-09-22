@@ -604,3 +604,128 @@ pub struct CustomerInfoFull {
     pub name: String,
     pub phone_number: Option<String>,
 }
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct CreateDigitalProductDeliveryRequest {
+    pub external_url: Option<String>,
+    pub instructions: Option<String>,
+}
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct PatchDigitalProductDeliveryRequest {
+    pub external_url: Option<String>,
+    pub files: Option<Vec<String>>,
+    pub instructions: Option<String>,
+}
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct LicenseKeyDuration {
+    pub count: i32,
+    pub interval: TimeInterval,
+}
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct DigitalProductDeliveryFile {
+    pub file_id: String,
+    pub file_name: String,
+    pub url: String,
+}
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct DigitalProductDelivery {
+    pub external_url: Option<String>,
+    pub files: Option<Vec<DigitalProductDeliveryFile>>,
+    pub instructions: Option<String>,
+}
+
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct AddMeterToPrice {
+    pub meter_id: String,
+    pub price_per_unit: String,
+    pub description: Option<String>,
+    pub free_threshold: Option<i64>,
+    pub measurement_unit: Option<String>,
+    pub name: Option<String>,
+}
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct OneTimePrice {
+    pub price: i32,
+    pub currency: Currency,
+    pub discount: i64,
+    pub purchasing_power_parity: bool,
+    pub pay_what_you_want: Option<bool>,
+    pub suggested_price: Option<i32>,
+    pub tax_inclusive: Option<bool>,
+}
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct RecurringPrice {
+    pub price: i32,
+    pub currency: Currency,
+    pub discount: i64,
+    pub purchasing_power_parity: bool,
+    pub payment_frequency_count: i32,
+    pub payment_frequency_interval: TimeInterval,
+    pub subscription_period_count: i32,
+    pub subscription_period_interval: TimeInterval,
+    pub tax_inclusive: Option<bool>,
+    pub trial_period_days: Option<i32>,
+}
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct UsageBasedPrice {
+    pub fixed_price: i32,
+    pub currency: Currency,
+    pub discount: i64,
+    pub purchasing_power_parity: bool,
+    pub payment_frequency_count: i32,
+    pub payment_frequency_interval: TimeInterval,
+    pub subscription_period_count: i32,
+    pub subscription_period_interval: TimeInterval,
+    pub meters: Option<Vec<AddMeterToPrice>>,
+    pub tax_inclusive: Option<bool>,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(untagged)]
+pub enum Price {
+    OneTime {
+        #[serde(rename = "type")]
+        type_field: String,
+        #[serde(flatten)]
+        one_time_price: OneTimePrice,
+    },
+    Recurring {
+        #[serde(rename = "type")]
+        type_field: String,
+        #[serde(flatten)]
+        recurring_price: RecurringPrice,
+    },
+    UsageBased {
+        #[serde(rename = "type")]
+        type_field: String,
+        #[serde(flatten)]
+        usage_based_price: UsageBasedPrice,
+    },
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(rename_all = "snake_case")]
+pub enum TaxCategory {
+    DigitalProducts,
+    Saas,
+    EBook,
+    Edtech,
+}
+

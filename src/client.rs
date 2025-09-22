@@ -40,6 +40,7 @@ use crate::{
         update_subscription::UpdateSubscriptionBuilder,
         validate_discount::ValidateDiscountBuilder,
         validate_license::ValidateLicenseBuilder,
+        list_products::ListProductsBuilder,
     },
 };
 
@@ -290,4 +291,9 @@ impl DodoPayments {
     ) -> UpdateLicenseKeyInstanceBuilder {
         UpdateLicenseKeyInstanceBuilder::new(self.handle.clone(), id, name)
     }
+
+    pub fn list_products(&self) -> ListProductsBuilder {
+        ListProductsBuilder::new(self.handle.clone())
+    }
+
 }
