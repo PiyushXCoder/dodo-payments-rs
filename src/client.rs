@@ -60,6 +60,7 @@ use crate::{
         unarchive_meter::UnarchiveMeterBuilder,
         ingest_events::IngestEventsBuilder,
         get_event::GetEventBuilder,
+        list_events::ListEventsBuilder,
     },
 };
 
@@ -409,4 +410,7 @@ impl DodoPayments {
         GetEventBuilder::new(self.handle.clone(), event_id)
     }
 
+    pub fn list_events(&self) -> ListEventsBuilder {
+        ListEventsBuilder::new(self.handle.clone())
+    }
 }
