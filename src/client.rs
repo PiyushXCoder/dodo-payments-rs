@@ -9,6 +9,7 @@ use crate::{
         common::structs::*,
         create_charge::CreateChargeBuilder,
         create_customer::CreateCustomerBuilder,
+        list_customers::ListCustomersBuilder,
         create_discount::CreateDiscountBuilder,
         create_subscription::CreateSubscriptionBuilder,
         deactivate_license::DeactivateLicenseBuilder,
@@ -95,6 +96,10 @@ impl DodoPayments {
 
     pub fn create_customer(&self, email: String, name: String) -> CreateCustomerBuilder {
         CreateCustomerBuilder::new(self.handle.clone(), email, name)
+    }
+
+    pub fn list_customers(&self) -> ListCustomersBuilder {
+        ListCustomersBuilder::new(self.handle.clone())
     }
 
     pub fn list_payments(&self) -> ListPaymentsBuilder {
