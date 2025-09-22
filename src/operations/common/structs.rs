@@ -977,3 +977,28 @@ pub struct WebhookDetails {
     pub url: String,
 }
 
+#[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(rename_all = "snake_case")]
+pub enum EventType {
+    PaymentSucceeded,
+    PaymentFailed,
+    PaymentProcessing,
+    PaymentCancelled,
+    RefundSucceeded,
+    RefundFailed,
+    DisputeOpened,
+    DisputeExpired,
+    DisputeAccepted,
+    DisputeCancelled,
+    DisputeChallenged,
+    DisputeWon,
+    DisputeLost,
+    SubscriptionActive,
+    SubscriptionRenewed,
+    SubscriptionOnHold,
+    SubscriptionCancelled,
+    SubscriptionFailed,
+    SubscriptionExpired,
+    SubscriptionPlanChanged,
+    LicenseKeyCreated,
+}
