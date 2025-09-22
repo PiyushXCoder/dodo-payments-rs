@@ -43,6 +43,7 @@ use crate::{
         list_products::ListProductsBuilder,
         create_product::CreateProductBuilder,
         get_product::GetProductBuilder,
+        update_product::UpdateProductBuilder,
     },
 };
 
@@ -304,6 +305,10 @@ impl DodoPayments {
 
     pub fn get_product(&self, id: String) -> GetProductBuilder {
         GetProductBuilder::new(self.handle.clone(), id)
+    }
+
+    pub fn update_product(&self, id: String) -> UpdateProductBuilder {
+        UpdateProductBuilder::new(self.handle.clone(), id)
     }
 
 }

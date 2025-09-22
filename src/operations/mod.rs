@@ -54,6 +54,7 @@ pub use get_license_key_instance::*;
 pub mod update_license_key_instance;
 pub use update_license_key_instance::*;
 
+pub mod update_product;
 pub mod get_product;
 pub mod create_product;
 pub mod list_products;
