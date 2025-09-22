@@ -837,3 +837,40 @@ pub struct Event {
     pub timestamp: String,
 }
 
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct RefundListItem {
+    pub refund_id: String,
+    pub payment_id: String,
+    pub business_id: String,
+    pub status: RefundStatus,
+    pub created_at: String,
+    pub is_partial: bool,
+    pub amount: Option<i32>,
+    pub currency: Option<Currency>,
+    pub reason: Option<String>,
+}
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct PartialRefundItem {
+    pub item_id: String,
+    pub amount: Option<i32>,
+    pub tax_inclusive: Option<bool>,
+}
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct RefundResponse {
+    pub refund_id: String,
+    pub payment_id: String,
+    pub business_id: String,
+    pub status: RefundStatus,
+    pub created_at: String,
+    pub is_partial: bool,
+    pub customer: CustomerLimitedDetailsResponse,
+    pub amount: Option<i32>,
+    pub currency: Option<Currency>,
+    pub reason: Option<String>,
+}
+

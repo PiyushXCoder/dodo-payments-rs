@@ -61,6 +61,7 @@ use crate::{
         ingest_events::IngestEventsBuilder,
         get_event::GetEventBuilder,
         list_events::ListEventsBuilder,
+        list_refunds::ListRefundsBuilder,
     },
 };
 
@@ -413,4 +414,9 @@ impl DodoPayments {
     pub fn list_events(&self) -> ListEventsBuilder {
         ListEventsBuilder::new(self.handle.clone())
     }
+
+    pub fn list_refunds(&self) -> ListRefundsBuilder {
+        ListRefundsBuilder::new(self.handle.clone())
+    }
+
 }
