@@ -58,6 +58,7 @@ use crate::{
         get_meter::GetMeterBuilder,
         archive_meter::ArchiveMeterBuilder,
         unarchive_meter::UnarchiveMeterBuilder,
+        ingest_events::IngestEventsBuilder,
     },
 };
 
@@ -398,4 +399,9 @@ impl DodoPayments {
     pub fn unarchive_meter(&self, meter_id: String) -> UnarchiveMeterBuilder {
         UnarchiveMeterBuilder::new(self.handle.clone(), meter_id)
     }
+
+    pub fn ingest_events(&self, events: Vec<EventInput>) -> IngestEventsBuilder {
+        IngestEventsBuilder::new(self.handle.clone(), events)
+    }
+
 }

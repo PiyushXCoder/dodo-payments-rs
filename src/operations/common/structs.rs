@@ -812,3 +812,28 @@ pub struct MeterResponse {
     pub updated_at: String,
 }
 
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct EventMetadata(pub std::collections::HashMap<String, serde_json::Value>);
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct EventInput {
+    pub event_id: String,
+    pub customer_id: String,
+    pub event_name: String,
+    pub metadata: Option<EventMetadata>,
+    pub timestamp: Option<String>,
+}
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct Event {
+    pub event_id: String,
+    pub business_id: String,
+    pub customer_id: String,
+    pub event_name: String,
+    pub metadata: Option<EventMetadata>,
+    pub timestamp: String,
+}
+
