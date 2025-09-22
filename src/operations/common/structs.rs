@@ -744,3 +744,71 @@ pub struct AddonResponse {
     pub updated_at: String,
 }
 
+#[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(rename_all = "snake_case")]
+pub enum AggregationType {
+    Count,
+    Sum,
+    Max,
+    Last,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(rename_all = "snake_case")]
+pub enum Conjunction {
+    And,
+    Or,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(rename_all = "snake_case")]
+pub enum FilterOperator {
+    Equals,
+    NotEquals,
+    GreaterThan,
+    GreaterThanOrEquals,
+    LessThan,
+    LessThanOrEquals,
+    Contains,
+    DoesNotContain,
+}
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct MeterFilterCondition {
+    pub key: String,
+    pub operator: FilterOperator,
+    #[serde(rename = "value")]
+    pub filter_value: serde_json::Value, // Can be string, number, or boolean
+}
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct MeterAggregation {
+    #[serde(rename = "type")]
+    pub aggregation_type: AggregationType,
+    pub key: Option<String>,
+}
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct MeterFilter {
+    pub conjunction: Conjunction,
+    pub clauses: Vec<serde_json::Value>, // Can be conditions or nested filters
+}
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct MeterResponse {
+    pub id: String,
+    pub business_id: String,
+    pub name: String,
+    pub event_name: String,
+    pub aggregation: MeterAggregation,
+    pub measurement_unit: String,
+    pub description: Option<String>,
+    pub filter: Option<MeterFilter>,
+    pub created_at: String,
+    pub updated_at: String,
+}
+

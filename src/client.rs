@@ -55,6 +55,7 @@ use crate::{
         update_addon_images::UpdateAddonImagesBuilder,
         create_meter::CreateMeterBuilder,
         list_meters::ListMetersBuilder,
+        get_meter::GetMeterBuilder,
     },
 };
 
@@ -382,6 +383,10 @@ impl DodoPayments {
 
     pub fn list_meters(&self) -> ListMetersBuilder {
         ListMetersBuilder::new(self.handle.clone())
+    }
+
+    pub fn get_meter(&self, meter_id: String) -> GetMeterBuilder {
+        GetMeterBuilder::new(self.handle.clone(), meter_id)
     }
 
 }
