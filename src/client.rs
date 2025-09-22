@@ -82,6 +82,7 @@ use crate::{
         update_webhook_headers::UpdateWebhookHeadersBuilder,
         validate_discount::ValidateDiscountBuilder,
         validate_license::ValidateLicenseBuilder,
+        get_supported_countries::GetSupportedCountriesBuilder,
     },
 };
 
@@ -523,5 +524,9 @@ impl DodoPayments {
 
     pub fn get_webhook_secret(&self, webhook_id: String) -> GetWebhookSecretBuilder {
         GetWebhookSecretBuilder::new(self.handle.clone(), webhook_id)
+    }
+
+    pub fn get_supported_countries(&self) -> GetSupportedCountriesBuilder {
+        GetSupportedCountriesBuilder::new(self.handle.clone())
     }
 }

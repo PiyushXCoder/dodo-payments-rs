@@ -16,6 +16,7 @@ pub mod create_product;
 pub mod create_webhook;
 pub use create_webhook::*;
 pub mod create_refund;
+pub mod get_supported_countries;
 pub mod create_subscription;
 pub mod deactivate_license;
 pub mod delete_discount;
