@@ -46,6 +46,7 @@ use crate::{
         update_product::UpdateProductBuilder,
         update_product_images::UpdateProductImagesBuilder,
         archive_product::ArchiveProductBuilder,
+        unarchive_product::UnarchiveProductBuilder,
     },
 };
 
@@ -321,4 +322,7 @@ impl DodoPayments {
         ArchiveProductBuilder::new(self.handle.clone(), id)
     }
 
+    pub fn unarchive_product(&self, id: String) -> UnarchiveProductBuilder {
+        UnarchiveProductBuilder::new(self.handle.clone(), id)
+    }
 }
