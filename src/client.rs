@@ -48,6 +48,7 @@ use crate::{
         update_subscription::UpdateSubscriptionBuilder,
         validate_discount::ValidateDiscountBuilder,
         validate_license::ValidateLicenseBuilder,
+        create_addon::CreateAddonBuilder,
     },
 };
 
@@ -336,4 +337,15 @@ impl DodoPayments {
     pub fn update_product_files(&self, id: String, file_name: String) -> UpdateProductFilesBuilder {
         UpdateProductFilesBuilder::new(self.handle.clone(), id, file_name)
     }
+
+    pub fn create_addon(
+        &self,
+        name: String,
+        tax_category: TaxCategory,
+        price: i32,
+        currency: Currency,
+    ) -> CreateAddonBuilder {
+        CreateAddonBuilder::new(self.handle.clone(), name, tax_category, price, currency)
+    }
+
 }

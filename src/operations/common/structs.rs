@@ -729,3 +729,18 @@ pub enum TaxCategory {
     Edtech,
 }
 
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct AddonResponse {
+    pub id: String,
+    pub business_id: String,
+    pub name: String,
+    pub tax_category: TaxCategory,
+    pub price: i32,
+    pub currency: Currency,
+    pub description: Option<String>,
+    pub image: Option<String>,
+    pub created_at: String,
+    pub updated_at: String,
+}
+
