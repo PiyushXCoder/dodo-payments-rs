@@ -903,3 +903,33 @@ pub struct GetDisputeResponse {
     pub remarks: Option<String>,
 }
 
+#[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(rename_all = "snake_case")]
+pub enum PayoutStatus {
+    NotInitiated,
+    InProgress,
+    OnHold,
+    Failed,
+    Success,
+}
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct PayoutsResponse {
+    pub payout_id: String,
+    pub business_id: String,
+    pub payment_method: String,
+    pub status: PayoutStatus,
+    pub fee: i64,
+    pub tax: i64,
+    pub amount: i64,
+    pub created_at: String,
+    pub updated_at: String,
+    pub currency: Currency,
+    pub refunds: i64,
+    pub chargebacks: i64,
+    pub name: Option<String>,
+    pub payout_document_url: Option<String>,
+    pub remarks: Option<String>,
+}
+

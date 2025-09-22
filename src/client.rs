@@ -67,6 +67,7 @@ use crate::{
         get_refund_receipt::GetRefundReceiptBuilder,
         list_disputes::ListDisputesBuilder,
         get_dispute::GetDisputeBuilder,
+        list_payouts::ListPayoutsBuilder,
     },
 };
 
@@ -442,5 +443,9 @@ impl DodoPayments {
 
     pub fn get_dispute(&self, dispute_id: String) -> GetDisputeBuilder {
         GetDisputeBuilder::new(self.handle.clone(), dispute_id)
+    }
+
+    pub fn list_payouts(&self) -> ListPayoutsBuilder {
+        ListPayoutsBuilder::new(self.handle.clone())
     }
 }
