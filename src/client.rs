@@ -53,6 +53,7 @@ use crate::{
         get_addon::GetAddonBuilder,
         update_addon::UpdateAddonBuilder,
         update_addon_images::UpdateAddonImagesBuilder,
+        create_meter::CreateMeterBuilder,
     },
 };
 
@@ -367,4 +368,15 @@ impl DodoPayments {
     pub fn update_addon_images(&self, addon_id: String) -> UpdateAddonImagesBuilder {
         UpdateAddonImagesBuilder::new(self.handle.clone(), addon_id)
     }
+
+    pub fn create_meter(
+        &self,
+        name: String,
+        event_name: String,
+        aggregation: MeterAggregation,
+        measurement_unit: String,
+    ) -> CreateMeterBuilder {
+        CreateMeterBuilder::new(self.handle.clone(), name, event_name, aggregation, measurement_unit)
+    }
+
 }
