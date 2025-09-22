@@ -68,4 +68,5 @@ pub mod get_addon;
 pub mod update_addon;
 pub mod update_addon_images;
 pub mod create_meter;
+pub mod list_meters;
 pub mod common;
