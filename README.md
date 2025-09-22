@@ -5,7 +5,9 @@
 <img width="200" height="" alt="Image" src="./dodo.png" align="center"/>
 </p>
 
-This is Unoffical SDK of [dodopayments.com](https://dodopayments.com/). Almost all features are implemented with a example script. A good amount of testing is required. 
+[![](https://img.shields.io/crates/v/dodo_payments.svg?style=flat-square)](https://crates.io/crates/dodo_payments)
+
+This is Unoffical SDK of [dodopayments.com](https://dodopayments.com/). Almost all features are implemented with a example script. A good amount of testing is required.
 
 ## How to use
 
