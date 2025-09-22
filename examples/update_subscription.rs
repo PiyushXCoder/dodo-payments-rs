@@ -24,11 +24,11 @@ async fn main() {
     let response = client
         .update_subscription(subscription_id)
         .billing(BillingAddress {
-            street: "123 Main St".to_string(),
-            city: "Anytown".to_string(),
-            state: "CA".to_string(),
+            street: Some("123 Main St".to_string()),
+            city: Some("Anytown".to_string()),
+            state: Some("CA".to_string()),
             country: CountryCodeAlpha2::US,
-            zipcode: "90210".to_string(),
+            zipcode: Some("90210".to_string()),
         })
         .cancel_at_next_billing_date(false)
         .metadata(metadata)

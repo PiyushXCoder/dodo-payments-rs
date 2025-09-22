@@ -1,6 +1,4 @@
-use dodo_payments::{
-    DodoPayments, client::DodoPaymentsConfigBuilder, operations::update_webhook_headers::UpdateWebhookHeadersConfig,
-};
+use dodo_payments::{DodoPayments, client::DodoPaymentsConfigBuilder};
 use std::collections::HashMap;
 use std::env;
 

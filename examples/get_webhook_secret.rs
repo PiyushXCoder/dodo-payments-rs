@@ -1,6 +1,4 @@
-use dodo_payments::{
-    DodoPayments, client::DodoPaymentsConfigBuilder, operations::get_webhook_secret::GetWebhookSecretConfig,
-};
+use dodo_payments::{DodoPayments, client::DodoPaymentsConfigBuilder};
 use std::env;
 
 #[tokio::main]
@@ -16,10 +14,7 @@ async fn main() {
             .environment("test_mode"),
     );
 
-    let response = client
-        .get_webhook_secret(webhook_id)
-        .send()
-        .await;
+    let response = client.get_webhook_secret(webhook_id).send().await;
 
     println!("Response: {:#?}", response);
 }

@@ -1,16 +1,8 @@
 use dodo_payments::{
-    DodoPayments, 
+    DodoPayments,
     client::DodoPaymentsConfigBuilder,
-    operations::common::structs::{
-        MeterAggregation, 
-        AggregationType,
-        MeterFilter,
-        MeterFilterCondition,
-        FilterOperator,
-        Conjunction
-    }
+    operations::common::structs::{AggregationType, Conjunction, MeterAggregation, MeterFilter},
 };
-use serde_json::Value;
 use std::env;
 
 #[tokio::main]
@@ -42,13 +34,13 @@ async fn main() {
         .await;
 
     println!("Response: {:#?}", response);
-    
+
     // Create a more complex meter with sum aggregation and a filter
     let sum_aggregation = MeterAggregation {
         aggregation_type: AggregationType::Sum,
         key: Some("amount".to_string()),
     };
-    
+
     // Note: For complex filters, you would need to construct the JSON structure manually
     // This is a simplified example showing the basic structure
     let filter_json = serde_json::json!({
@@ -61,12 +53,12 @@ async fn main() {
             }
         ]
     });
-    
+
     let filter = MeterFilter {
         conjunction: Conjunction::And,
         clauses: vec![filter_json],
     };
-    
+
     let response2 = client
         .create_meter(
             "Premium Revenue".to_string(),
@@ -81,3 +73,4 @@ async fn main() {
 
     println!("Response 2: {:#?}", response2);
 }
+

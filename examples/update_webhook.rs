@@ -1,6 +1,4 @@
-use dodo_payments::{
-    DodoPayments, client::DodoPaymentsConfigBuilder, operations::update_webhook::UpdateWebhookConfig,
-};
+use dodo_payments::{DodoPayments, client::DodoPaymentsConfigBuilder};
 use std::env;
 
 #[tokio::main]
