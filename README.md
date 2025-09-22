@@ -71,7 +71,7 @@ cargo run --example checkout_sessions
 - [x] Usage Events
 - [x] Refunds
 - [x] Disputes
-- [ ] Payouts
+- [x] Payouts
 - [ ] Brands
 - [ ] Webhooks
 - [ ] Miscellaneous
