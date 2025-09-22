@@ -80,4 +80,5 @@ pub mod create_refund;
 pub mod get_refund;
 pub mod get_refund_receipt;
 pub mod list_disputes;
+pub mod get_dispute;
 pub mod common;
