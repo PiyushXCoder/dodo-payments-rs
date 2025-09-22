@@ -78,4 +78,5 @@ pub mod list_events;
 pub mod list_refunds;
 pub mod create_refund;
 pub mod get_refund;
+pub mod get_refund_receipt;
 pub mod common;

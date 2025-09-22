@@ -1,0 +1,1 @@
+pub type GetRefundReceiptResponse = Vec<u8>;

@@ -64,6 +64,7 @@ use crate::{
         list_refunds::ListRefundsBuilder,
         create_refund::CreateRefundBuilder,
         get_refund::GetRefundBuilder,
+        get_refund_receipt::GetRefundReceiptBuilder,
     },
 };
 
@@ -429,4 +430,7 @@ impl DodoPayments {
         GetRefundBuilder::new(self.handle.clone(), refund_id)
     }
 
+    pub fn get_refund_receipt(&self, refund_id: String) -> GetRefundReceiptBuilder {
+        GetRefundReceiptBuilder::new(self.handle.clone(), refund_id)
+    }
 }
