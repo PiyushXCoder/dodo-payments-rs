@@ -84,4 +84,5 @@ pub mod get_dispute;
 pub mod list_payouts;
 pub mod list_payments;
 pub mod list_brands;
+pub mod create_brand;
 pub mod common;
