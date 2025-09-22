@@ -82,4 +82,6 @@ pub mod get_refund_receipt;
 pub mod list_disputes;
 pub mod get_dispute;
 pub mod list_payouts;
+pub mod list_payments;
+pub mod list_brands;
 pub mod common;

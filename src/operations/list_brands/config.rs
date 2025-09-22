@@ -1,0 +1,1 @@
+// Empty config file - no configuration needed for list brands operation

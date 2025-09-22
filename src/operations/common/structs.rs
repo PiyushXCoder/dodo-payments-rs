@@ -933,3 +933,29 @@ pub struct PayoutsResponse {
     pub remarks: Option<String>,
 }
 
+#[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
+pub enum BrandVerificationStatus {
+    Success,
+    Fail,
+    Review,
+    Hold,
+}
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct BrandResponse {
+    pub brand_id: String,
+    pub business_id: String,
+    pub enabled: bool,
+    pub statement_descriptor: String,
+    pub verification_status: BrandVerificationStatus,
+    pub verification_enabled: bool,
+    pub description: Option<String>,
+    pub image: Option<String>,
+    pub name: Option<String>,
+    pub reason_for_hold: Option<String>,
+    pub support_email: Option<String>,
+    pub url: Option<String>,
+}
+

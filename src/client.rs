@@ -68,6 +68,8 @@ use crate::{
         list_disputes::ListDisputesBuilder,
         get_dispute::GetDisputeBuilder,
         list_payouts::ListPayoutsBuilder,
+        list_payments::ListPaymentsBuilder,
+        list_brands::ListBrandsBuilder,
     },
 };
 
@@ -447,5 +449,13 @@ impl DodoPayments {
 
     pub fn list_payouts(&self) -> ListPayoutsBuilder {
         ListPayoutsBuilder::new(self.handle.clone())
+    }
+
+    pub fn list_payments(&self) -> ListPaymentsBuilder {
+        ListPaymentsBuilder::new(self.handle.clone())
+    }
+
+    pub fn list_brands(&self) -> ListBrandsBuilder {
+        ListBrandsBuilder::new(self.handle.clone())
     }
 }
