@@ -4,41 +4,64 @@ use crate::{
     common::Environment,
     operations::{
         activate_license::ActivateLicenseBuilder,
+        archive_meter::ArchiveMeterBuilder,
         archive_product::ArchiveProductBuilder,
         change_plan::{ChangePlanBuilder, ProrationBillingMode},
         checkout_sessions::CheckoutSessionsBuilder,
         common::structs::*,
+        create_addon::CreateAddonBuilder,
+        create_brand::CreateBrandBuilder,
         create_charge::CreateChargeBuilder,
         create_customer::CreateCustomerBuilder,
         create_customer_portal_session::CreateCustomerPortalSessionBuilder,
         create_customer_wallet_ledger_entry::CreateCustomerWalletLedgerEntryBuilder,
         create_customer_wallet_ledger_entry::CustomerLedgerEntryType,
         create_discount::CreateDiscountBuilder,
+        create_meter::CreateMeterBuilder,
         create_product::CreateProductBuilder,
+        create_refund::CreateRefundBuilder,
         create_subscription::CreateSubscriptionBuilder,
         deactivate_license::DeactivateLicenseBuilder,
         delete_discount::DeleteDiscountBuilder,
+        get_addon::GetAddonBuilder,
+        get_brand::GetBrandBuilder,
         get_customer::GetCustomerBuilder,
         get_customer_wallets::GetCustomerWalletsBuilder,
+        get_dispute::GetDisputeBuilder,
+        get_event::GetEventBuilder,
         get_invoice::GetInvoiceBuilder,
         get_license_key::GetLicenseKeyBuilder,
         get_license_key_instance::GetLicenseKeyInstanceBuilder,
         get_license_key_instances::GetLicenseKeyInstancesBuilder,
         get_license_keys::GetLicenseKeysBuilder,
         get_line_items::GetLineItemsBuilder,
+        get_meter::GetMeterBuilder,
         get_payment_details::GetPaymentDetailsBuilder,
         get_product::GetProductBuilder,
+        get_refund::GetRefundBuilder,
+        get_refund_receipt::GetRefundReceiptBuilder,
         get_subscription::GetSubscriptionBuilder,
         get_subscription_usage_history::GetSubscriptionUsageHistoryBuilder,
+        ingest_events::IngestEventsBuilder,
+        list_addons::ListAddonsBuilder,
+        list_brands::ListBrandsBuilder,
         list_customer_wallet_ledger_entries::ListCustomerWalletLedgerEntriesBuilder,
         list_customers::ListCustomersBuilder,
         list_discounts::ListDiscountsBuilder,
+        list_disputes::ListDisputesBuilder,
+        list_events::ListEventsBuilder,
+        list_meters::ListMetersBuilder,
         list_payments::ListPaymentsBuilder,
+        list_payouts::ListPayoutsBuilder,
         list_products::ListProductsBuilder,
+        list_refunds::ListRefundsBuilder,
         list_subscriptions::ListSubscriptionsBuilder,
         one_time_payments::OneTimePaymentBuilder,
         patch_customer::PatchCustomerBuilder,
+        unarchive_meter::UnarchiveMeterBuilder,
         unarchive_product::UnarchiveProductBuilder,
+        update_addon::UpdateAddonBuilder,
+        update_addon_images::UpdateAddonImagesBuilder,
         update_brand::UpdateBrandBuilder,
         update_brand_images::UpdateBrandImagesBuilder,
         update_discount::UpdateDiscountBuilder,
@@ -50,30 +73,6 @@ use crate::{
         update_subscription::UpdateSubscriptionBuilder,
         validate_discount::ValidateDiscountBuilder,
         validate_license::ValidateLicenseBuilder,
-        create_addon::CreateAddonBuilder,
-        list_addons::ListAddonsBuilder,
-        get_addon::GetAddonBuilder,
-        update_addon::UpdateAddonBuilder,
-        update_addon_images::UpdateAddonImagesBuilder,
-        create_meter::CreateMeterBuilder,
-        list_meters::ListMetersBuilder,
-        get_meter::GetMeterBuilder,
-        archive_meter::ArchiveMeterBuilder,
-        unarchive_meter::UnarchiveMeterBuilder,
-        ingest_events::IngestEventsBuilder,
-        get_event::GetEventBuilder,
-        list_events::ListEventsBuilder,
-        list_refunds::ListRefundsBuilder,
-        create_refund::CreateRefundBuilder,
-        get_refund::GetRefundBuilder,
-        get_refund_receipt::GetRefundReceiptBuilder,
-        list_disputes::ListDisputesBuilder,
-        get_dispute::GetDisputeBuilder,
-        list_payouts::ListPayoutsBuilder,
-        list_payments::ListPaymentsBuilder,
-        list_brands::ListBrandsBuilder,
-        create_brand::CreateBrandBuilder,
-        get_brand::GetBrandBuilder,
     },
 };
 
@@ -404,7 +403,13 @@ impl DodoPayments {
         aggregation: MeterAggregation,
         measurement_unit: String,
     ) -> CreateMeterBuilder {
-        CreateMeterBuilder::new(self.handle.clone(), name, event_name, aggregation, measurement_unit)
+        CreateMeterBuilder::new(
+            self.handle.clone(),
+            name,
+            event_name,
+            aggregation,
+            measurement_unit,
+        )
     }
 
     pub fn list_meters(&self) -> ListMetersBuilder {
@@ -461,10 +466,6 @@ impl DodoPayments {
 
     pub fn list_payouts(&self) -> ListPayoutsBuilder {
         ListPayoutsBuilder::new(self.handle.clone())
-    }
-
-    pub fn list_payments(&self) -> ListPaymentsBuilder {
-        ListPaymentsBuilder::new(self.handle.clone())
     }
 
     pub fn list_brands(&self) -> ListBrandsBuilder {
