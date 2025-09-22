@@ -1,3 +1,4 @@
+#[allow(unused_imports)]
 pub use super::config::*;
 use super::*;
 use reqwest::Method;
