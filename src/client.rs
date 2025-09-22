@@ -71,6 +71,7 @@ use crate::{
         list_payments::ListPaymentsBuilder,
         list_brands::ListBrandsBuilder,
         create_brand::CreateBrandBuilder,
+        get_brand::GetBrandBuilder,
     },
 };
 
@@ -464,4 +465,7 @@ impl DodoPayments {
         CreateBrandBuilder::new(self.handle.clone())
     }
 
+    pub fn get_brand(&self, brand_id: String) -> GetBrandBuilder {
+        GetBrandBuilder::new(self.handle.clone(), brand_id)
+    }
 }

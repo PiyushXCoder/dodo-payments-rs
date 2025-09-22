@@ -4,6 +4,7 @@ pub mod create_customer_portal_session;
 pub mod create_customer_wallet_ledger_entry;
 pub mod get_customer;
 pub mod get_customer_wallets;
+pub mod get_brand;
 pub mod list_customer_wallet_ledger_entries;
 pub mod list_customers;
 pub mod patch_customer;
