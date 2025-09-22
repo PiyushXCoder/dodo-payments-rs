@@ -63,4 +63,5 @@ pub mod get_product;
 pub mod create_product;
 pub mod list_products;
 pub mod create_addon;
+pub mod list_addons;
 pub mod common;

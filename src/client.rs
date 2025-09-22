@@ -49,6 +49,7 @@ use crate::{
         validate_discount::ValidateDiscountBuilder,
         validate_license::ValidateLicenseBuilder,
         create_addon::CreateAddonBuilder,
+        list_addons::ListAddonsBuilder,
     },
 };
 
@@ -346,6 +347,10 @@ impl DodoPayments {
         currency: Currency,
     ) -> CreateAddonBuilder {
         CreateAddonBuilder::new(self.handle.clone(), name, tax_category, price, currency)
+    }
+
+    pub fn list_addons(&self) -> ListAddonsBuilder {
+        ListAddonsBuilder::new(self.handle.clone())
     }
 
 }
