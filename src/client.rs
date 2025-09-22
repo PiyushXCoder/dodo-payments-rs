@@ -4,6 +4,7 @@ use crate::{
     common::Environment,
     operations::{
         activate_license::ActivateLicenseBuilder,
+        archive_product::ArchiveProductBuilder,
         change_plan::{ChangePlanBuilder, ProrationBillingMode},
         checkout_sessions::CheckoutSessionsBuilder,
         common::structs::*,
@@ -12,15 +13,13 @@ use crate::{
         create_customer_portal_session::CreateCustomerPortalSessionBuilder,
         create_customer_wallet_ledger_entry::CreateCustomerWalletLedgerEntryBuilder,
         create_customer_wallet_ledger_entry::CustomerLedgerEntryType,
-        list_customers::ListCustomersBuilder,
-        get_customer::GetCustomerBuilder,
-        get_customer_wallets::GetCustomerWalletsBuilder,
-        list_customer_wallet_ledger_entries::ListCustomerWalletLedgerEntriesBuilder,
-        patch_customer::PatchCustomerBuilder,
         create_discount::CreateDiscountBuilder,
+        create_product::CreateProductBuilder,
         create_subscription::CreateSubscriptionBuilder,
         deactivate_license::DeactivateLicenseBuilder,
         delete_discount::DeleteDiscountBuilder,
+        get_customer::GetCustomerBuilder,
+        get_customer_wallets::GetCustomerWalletsBuilder,
         get_invoice::GetInvoiceBuilder,
         get_license_key::GetLicenseKeyBuilder,
         get_license_key_instance::GetLicenseKeyInstanceBuilder,
@@ -28,25 +27,27 @@ use crate::{
         get_license_keys::GetLicenseKeysBuilder,
         get_line_items::GetLineItemsBuilder,
         get_payment_details::GetPaymentDetailsBuilder,
+        get_product::GetProductBuilder,
         get_subscription::GetSubscriptionBuilder,
         get_subscription_usage_history::GetSubscriptionUsageHistoryBuilder,
+        list_customer_wallet_ledger_entries::ListCustomerWalletLedgerEntriesBuilder,
+        list_customers::ListCustomersBuilder,
         list_discounts::ListDiscountsBuilder,
         list_payments::ListPaymentsBuilder,
+        list_products::ListProductsBuilder,
         list_subscriptions::ListSubscriptionsBuilder,
         one_time_payments::OneTimePaymentBuilder,
+        patch_customer::PatchCustomerBuilder,
+        unarchive_product::UnarchiveProductBuilder,
         update_discount::UpdateDiscountBuilder,
         update_license_key::UpdateLicenseKeyBuilder,
         update_license_key_instance::UpdateLicenseKeyInstanceBuilder,
+        update_product::UpdateProductBuilder,
+        update_product_files::UpdateProductFilesBuilder,
+        update_product_images::UpdateProductImagesBuilder,
         update_subscription::UpdateSubscriptionBuilder,
         validate_discount::ValidateDiscountBuilder,
         validate_license::ValidateLicenseBuilder,
-        list_products::ListProductsBuilder,
-        create_product::CreateProductBuilder,
-        get_product::GetProductBuilder,
-        update_product::UpdateProductBuilder,
-        update_product_images::UpdateProductImagesBuilder,
-        archive_product::ArchiveProductBuilder,
-        unarchive_product::UnarchiveProductBuilder,
     },
 };
 
@@ -108,7 +109,10 @@ impl DodoPayments {
         CheckoutSessionsBuilder::new(self.handle.clone(), product_cart)
     }
 
-    pub fn create_customer_portal_session(&self, customer_id: String) -> CreateCustomerPortalSessionBuilder {
+    pub fn create_customer_portal_session(
+        &self,
+        customer_id: String,
+    ) -> CreateCustomerPortalSessionBuilder {
         CreateCustomerPortalSessionBuilder::new(self.handle.clone(), customer_id)
     }
 
@@ -132,7 +136,10 @@ impl DodoPayments {
         GetCustomerWalletsBuilder::new(self.handle.clone(), customer_id)
     }
 
-    pub fn list_customer_wallet_ledger_entries(&self, customer_id: String) -> ListCustomerWalletLedgerEntriesBuilder {
+    pub fn list_customer_wallet_ledger_entries(
+        &self,
+        customer_id: String,
+    ) -> ListCustomerWalletLedgerEntriesBuilder {
         ListCustomerWalletLedgerEntriesBuilder::new(self.handle.clone(), customer_id)
     }
 
@@ -324,5 +331,9 @@ impl DodoPayments {
 
     pub fn unarchive_product(&self, id: String) -> UnarchiveProductBuilder {
         UnarchiveProductBuilder::new(self.handle.clone(), id)
+    }
+
+    pub fn update_product_files(&self, id: String, file_name: String) -> UpdateProductFilesBuilder {
+        UpdateProductFilesBuilder::new(self.handle.clone(), id, file_name)
     }
 }

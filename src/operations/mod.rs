@@ -54,6 +54,7 @@ pub use get_license_key_instance::*;
 pub mod update_license_key_instance;
 pub use update_license_key_instance::*;
 
+pub mod update_product_files;
 pub mod unarchive_product;
 pub mod archive_product;
 pub mod update_product_images;
