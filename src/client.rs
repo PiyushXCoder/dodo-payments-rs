@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use std::sync::Arc;
 
 use crate::{
@@ -21,8 +22,10 @@ use crate::{
         create_product::CreateProductBuilder,
         create_refund::CreateRefundBuilder,
         create_subscription::CreateSubscriptionBuilder,
+        create_webhook::CreateWebhookBuilder,
         deactivate_license::DeactivateLicenseBuilder,
         delete_discount::DeleteDiscountBuilder,
+        delete_webhook::DeleteWebhookBuilder,
         get_addon::GetAddonBuilder,
         get_brand::GetBrandBuilder,
         get_customer::GetCustomerBuilder,
@@ -42,6 +45,9 @@ use crate::{
         get_refund_receipt::GetRefundReceiptBuilder,
         get_subscription::GetSubscriptionBuilder,
         get_subscription_usage_history::GetSubscriptionUsageHistoryBuilder,
+        get_webhook::GetWebhookBuilder,
+        get_webhook_headers::GetWebhookHeadersBuilder,
+        get_webhook_secret::GetWebhookSecretBuilder,
         ingest_events::IngestEventsBuilder,
         list_addons::ListAddonsBuilder,
         list_brands::ListBrandsBuilder,
@@ -72,6 +78,8 @@ use crate::{
         update_product_files::UpdateProductFilesBuilder,
         update_product_images::UpdateProductImagesBuilder,
         update_subscription::UpdateSubscriptionBuilder,
+        update_webhook::UpdateWebhookBuilder,
+        update_webhook_headers::UpdateWebhookHeadersBuilder,
         validate_discount::ValidateDiscountBuilder,
         validate_license::ValidateLicenseBuilder,
     },
@@ -449,6 +457,10 @@ impl DodoPayments {
         CreateRefundBuilder::new(self.handle.clone(), payment_id)
     }
 
+    pub fn create_webhook(&self, url: String) -> CreateWebhookBuilder {
+        CreateWebhookBuilder::new(self.handle.clone(), url)
+    }
+
     pub fn get_refund(&self, refund_id: String) -> GetRefundBuilder {
         GetRefundBuilder::new(self.handle.clone(), refund_id)
     }
@@ -483,5 +495,33 @@ impl DodoPayments {
 
     pub fn list_webhooks(&self) -> ListWebhooksBuilder {
         ListWebhooksBuilder::new(self.handle.clone())
+    }
+
+    pub fn get_webhook(&self, webhook_id: String) -> GetWebhookBuilder {
+        GetWebhookBuilder::new(self.handle.clone(), webhook_id)
+    }
+
+    pub fn update_webhook(&self, webhook_id: String) -> UpdateWebhookBuilder {
+        UpdateWebhookBuilder::new(self.handle.clone(), webhook_id)
+    }
+
+    pub fn delete_webhook(&self, webhook_id: String) -> DeleteWebhookBuilder {
+        DeleteWebhookBuilder::new(self.handle.clone(), webhook_id)
+    }
+
+    pub fn get_webhook_headers(&self, webhook_id: String) -> GetWebhookHeadersBuilder {
+        GetWebhookHeadersBuilder::new(self.handle.clone(), webhook_id)
+    }
+
+    pub fn update_webhook_headers(
+        &self,
+        webhook_id: String,
+        headers: HashMap<String, String>,
+    ) -> UpdateWebhookHeadersBuilder {
+        UpdateWebhookHeadersBuilder::new(self.handle.clone(), webhook_id, headers)
+    }
+
+    pub fn get_webhook_secret(&self, webhook_id: String) -> GetWebhookSecretBuilder {
+        GetWebhookSecretBuilder::new(self.handle.clone(), webhook_id)
     }
 }
