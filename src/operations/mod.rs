@@ -71,4 +71,5 @@ pub mod create_meter;
 pub mod list_meters;
 pub mod get_meter;
 pub mod archive_meter;
+pub mod unarchive_meter;
 pub mod common;

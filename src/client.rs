@@ -57,6 +57,7 @@ use crate::{
         list_meters::ListMetersBuilder,
         get_meter::GetMeterBuilder,
         archive_meter::ArchiveMeterBuilder,
+        unarchive_meter::UnarchiveMeterBuilder,
     },
 };
 
@@ -394,4 +395,7 @@ impl DodoPayments {
         ArchiveMeterBuilder::new(self.handle.clone(), meter_id)
     }
 
+    pub fn unarchive_meter(&self, meter_id: String) -> UnarchiveMeterBuilder {
+        UnarchiveMeterBuilder::new(self.handle.clone(), meter_id)
+    }
 }
