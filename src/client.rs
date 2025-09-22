@@ -56,6 +56,7 @@ use crate::{
         list_products::ListProductsBuilder,
         list_refunds::ListRefundsBuilder,
         list_subscriptions::ListSubscriptionsBuilder,
+        list_webhooks::ListWebhooksBuilder,
         one_time_payments::OneTimePaymentBuilder,
         patch_customer::PatchCustomerBuilder,
         unarchive_meter::UnarchiveMeterBuilder,
@@ -478,5 +479,9 @@ impl DodoPayments {
 
     pub fn get_brand(&self, brand_id: String) -> GetBrandBuilder {
         GetBrandBuilder::new(self.handle.clone(), brand_id)
+    }
+
+    pub fn list_webhooks(&self) -> ListWebhooksBuilder {
+        ListWebhooksBuilder::new(self.handle.clone())
     }
 }

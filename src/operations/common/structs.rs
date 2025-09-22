@@ -595,7 +595,7 @@ pub enum CustomerRequest {
 }
 
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct CustomerInfoFull {
     pub business_id: String,
     pub created_at: String,
@@ -957,5 +957,23 @@ pub struct BrandResponse {
     pub reason_for_hold: Option<String>,
     pub support_email: Option<String>,
     pub url: Option<String>,
+}
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct WebhookDetails {
+    #[serde(rename = "createdAt")]
+    pub created_at: String,
+    pub description: String,
+    pub disabled: Option<bool>,
+    #[serde(rename = "filterTypes")]
+    pub filter_types: Option<Vec<String>>,
+    pub id: String,
+    pub metadata: HashMap<String, String>,
+    #[serde(rename = "rateLimit")]
+    pub rate_limit: Option<i32>,
+    #[serde(rename = "updatedAt")]
+    pub updated_at: String,
+    pub url: String,
 }
 

@@ -80,6 +80,7 @@ pub mod list_meters;
 pub mod list_payouts;
 pub mod list_products;
 pub mod list_refunds;
+pub mod list_webhooks;
 pub mod unarchive_meter;
 pub mod unarchive_product;
 pub mod update_addon;
