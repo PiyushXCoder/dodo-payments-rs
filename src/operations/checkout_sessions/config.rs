@@ -20,5 +20,7 @@ pub struct CheckoutSessionsConfig {
     pub confirm: Option<bool>,
     pub discount_code: Option<String>,
     pub metadata: Option<HashMap<String, String>>,
-    // TODO: Add more fields as needed
+    pub customization: Option<CheckoutSessionCustomization>,
+    pub feature_flags: Option<CheckoutSessionFlags>,
+    pub subscription_data: Option<SubscriptionData>,
 }

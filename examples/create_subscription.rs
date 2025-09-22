@@ -28,11 +28,11 @@ async fn main() {
     };
 
     let billing_address = BillingAddress {
-        city: "Test City".to_string(),
+        city: Some("Test City".to_string()),
         country: CountryCodeAlpha2::US,
-        state: "Test State".to_string(),
-        street: "123 Test St".to_string(),
-        zipcode: "12345".to_string(),
+        state: Some("Test State".to_string()),
+        street: Some("123 Test St".to_string()),
+        zipcode: Some("12345".to_string()),
     };
 
     let response = client

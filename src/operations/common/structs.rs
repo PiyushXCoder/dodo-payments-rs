@@ -13,11 +13,18 @@ pub struct CustomerInfo {
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct BillingAddress {
-    pub street: String,
-    pub city: String,
-    pub state: String,
+    pub street: Option<String>,
+    pub city: Option<String>,
+    pub state: Option<String>,
     pub country: CountryCodeAlpha2,
-    pub zipcode: String,
+    pub zipcode: Option<String>,
+}
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct AttachAddonReq {
+    pub addon_id: String,
+    pub quantity: i32,
 }
 
 #[serde_with::skip_serializing_none]
@@ -26,6 +33,65 @@ pub struct ProductItem {
     pub product_id: String,
     pub quantity: u32,
     pub amount: Option<i32>,
+    pub addons: Option<Vec<AttachAddonReq>>,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(rename_all = "snake_case")]
+pub enum CheckoutTheme {
+    Dark,
+    Light,
+    System,
+}
+
+fn default_true() -> bool {
+    true
+}
+
+fn default_false() -> bool {
+    false
+}
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct CheckoutSessionCustomization {
+    #[serde(default = "default_true")]
+    pub show_on_demand_tag: bool,
+    #[serde(default = "default_true")]
+    pub show_order_details: bool,
+    pub theme: Option<CheckoutTheme>,
+}
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct CheckoutSessionFlags {
+    #[serde(default = "default_true")]
+    pub allow_currency_selection: bool,
+    #[serde(default = "default_true")]
+    pub allow_discount_code: bool,
+    #[serde(default = "default_true")]
+    pub allow_phone_number_collection: bool,
+    #[serde(default = "default_true")]
+    pub allow_tax_id: bool,
+    #[serde(default = "default_false")]
+    pub always_create_new_customer: bool,
+}
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct OnDemandSubscriptionReq {
+    pub mandate_only: bool,
+    pub adaptive_currency_fees_inclusive: Option<bool>,
+    pub product_currency: Option<Currency>,
+    pub product_description: Option<String>,
+    pub product_price: Option<i32>,
+}
+
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct SubscriptionData {
+    pub on_demand: Option<OnDemandSubscriptionReq>,
+    pub trial_period_days: Option<i32>,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
@@ -642,7 +708,6 @@ pub struct DigitalProductDelivery {
     pub files: Option<Vec<DigitalProductDeliveryFile>>,
     pub instructions: Option<String>,
 }
-
 
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Serialize, Deserialize, Clone)]

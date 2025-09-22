@@ -8,23 +8,6 @@ use crate::operations::common::structs::BillingAddress;
 
 #[skip_serializing_none]
 #[derive(Debug, Serialize, Deserialize, Clone)]
-pub struct AttachAddonReq {
-    pub addon_id: String,
-    pub quantity: i32,
-}
-
-#[skip_serializing_none]
-#[derive(Debug, Serialize, Deserialize, Clone)]
-pub struct OnDemandSubscriptionReq {
-    pub mandate_only: bool,
-    pub adaptive_currency_fees_inclusive: Option<bool>,
-    pub product_currency: Option<Currency>,
-    pub product_description: Option<String>,
-    pub product_price: Option<i32>,
-}
-
-#[skip_serializing_none]
-#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct RequestMetadata(pub HashMap<String, String>);
 
 #[skip_serializing_none]

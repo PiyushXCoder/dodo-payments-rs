@@ -24,12 +24,30 @@ impl CheckoutSessionsBuilder {
                 confirm: None,
                 discount_code: None,
                 metadata: None,
+                customization: None,
+                feature_flags: None,
+                subscription_data: None,
             },
         }
     }
 
     pub fn product_cart(mut self, items: Vec<ProductItem>) -> Self {
         self.config.product_cart = items;
+        self
+    }
+
+    pub fn customization(mut self, customization: CheckoutSessionCustomization) -> Self {
+        self.config.customization = Some(customization);
+        self
+    }
+
+    pub fn feature_flags(mut self, feature_flags: CheckoutSessionFlags) -> Self {
+        self.config.feature_flags = Some(feature_flags);
+        self
+    }
+
+    pub fn subscription_data(mut self, subscription_data: SubscriptionData) -> Self {
+        self.config.subscription_data = Some(subscription_data);
         self
     }
 

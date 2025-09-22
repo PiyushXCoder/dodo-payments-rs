@@ -1,5 +1,9 @@
 use dodo_payments::{
-    DodoPayments, client::DodoPaymentsConfigBuilder, operations::common::structs::ProductItem,
+    DodoPayments,
+    client::DodoPaymentsConfigBuilder,
+    operations::common::structs::{
+        CheckoutSessionCustomization, CheckoutSessionFlags, ProductItem, SubscriptionData,
+    },
 };
 use std::env;
 
@@ -21,7 +25,24 @@ async fn main() {
             product_id: product_id,
             quantity: 1,
             amount: None,
+            addons: None,
         }])
+        .customization(CheckoutSessionCustomization {
+            show_on_demand_tag: true,
+            show_order_details: true,
+            theme: None,
+        })
+        .feature_flags(CheckoutSessionFlags {
+            allow_currency_selection: true,
+            allow_discount_code: true,
+            allow_phone_number_collection: true,
+            allow_tax_id: true,
+            always_create_new_customer: false,
+        })
+        .subscription_data(SubscriptionData {
+            on_demand: None,
+            trial_period_days: None,
+        })
         .send()
         .await;
 
