@@ -50,6 +50,7 @@ use crate::{
         validate_license::ValidateLicenseBuilder,
         create_addon::CreateAddonBuilder,
         list_addons::ListAddonsBuilder,
+        get_addon::GetAddonBuilder,
     },
 };
 
@@ -351,6 +352,10 @@ impl DodoPayments {
 
     pub fn list_addons(&self) -> ListAddonsBuilder {
         ListAddonsBuilder::new(self.handle.clone())
+    }
+
+    pub fn get_addon(&self, addon_id: String) -> GetAddonBuilder {
+        GetAddonBuilder::new(self.handle.clone(), addon_id)
     }
 
 }
