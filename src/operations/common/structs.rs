@@ -22,18 +22,11 @@ pub struct BillingAddress {
 
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Serialize, Deserialize, Clone)]
-pub struct AttachAddonReq {
-    pub addon_id: String,
-    pub quantity: i32,
-}
-
-#[serde_with::skip_serializing_none]
-#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct ProductItem {
     pub product_id: String,
     pub quantity: u32,
     pub amount: Option<i32>,
-    pub addons: Option<Vec<AttachAddonReq>>,
+    pub addons: Option<Vec<Addon>>,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
@@ -567,7 +560,7 @@ pub enum CountryCodeAlpha2 {
 
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Serialize, Deserialize, Clone)]
-pub struct AddonCartResponseItem {
+pub struct Addon {
     pub addon_id: String,
     pub quantity: i32,
 }

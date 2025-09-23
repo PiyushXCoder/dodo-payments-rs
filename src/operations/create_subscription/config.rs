@@ -18,7 +18,7 @@ pub struct CreateSubscriptionConfig {
     pub quantity: i32,
     pub customer: CustomerRequest,
     pub billing: BillingAddress,
-    pub addons: Option<Vec<AttachAddonReq>>,
+    pub addons: Option<Vec<Addon>>,
     pub allowed_payment_method_types: Option<Vec<PaymentMethodTypes>>,
     pub billing_currency: Option<Currency>,
     pub discount_code: Option<String>,

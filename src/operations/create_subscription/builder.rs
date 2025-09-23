@@ -40,7 +40,7 @@ impl CreateSubscriptionBuilder {
         }
     }
 
-    pub fn addons(mut self, addons: Vec<AttachAddonReq>) -> Self {
+    pub fn addons(mut self, addons: Vec<Addon>) -> Self {
         self.config.addons = Some(addons);
         self
     }

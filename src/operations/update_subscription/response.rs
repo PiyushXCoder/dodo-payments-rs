@@ -1,14 +1,17 @@
-use super::super::common::structs::{AddonCartResponseItem, BillingAddress, Currency, CustomerLimitedDetailsResponse, Metadata, MeterCartResponseItem, SubscriptionStatus, TimeInterval};
+use super::super::common::structs::{
+    Addon, BillingAddress, Currency, CustomerLimitedDetailsResponse, Metadata,
+    MeterCartResponseItem, SubscriptionStatus, TimeInterval,
+};
 use serde::{Deserialize, Serialize};
 
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Serialize, Deserialize)]
 pub struct UpdateSubscriptionResponse {
-    pub addons: Option<Vec<AddonCartResponseItem>>,
+    pub addons: Option<Vec<Addon>>,
     pub billing: Option<BillingAddress>,
     pub cancel_at_next_billing_date: Option<bool>,
     pub cancelled_at: Option<String>, // TODO: Use chrono for date-time
-    pub created_at: String, // TODO: Use chrono for date-time
+    pub created_at: String,           // TODO: Use chrono for date-time
     pub currency: Currency,
     pub customer: CustomerLimitedDetailsResponse,
     pub discount_cycles_remaining: Option<i32>,

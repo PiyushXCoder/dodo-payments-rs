@@ -2,18 +2,18 @@ use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
 use super::super::common::structs::{
-    AddonCartResponseItem, BillingAddress, Currency,
-    CustomerLimitedDetailsResponse, MeterCartResponseItem, SubscriptionStatus, TimeInterval,
+    Addon, BillingAddress, Currency, CustomerLimitedDetailsResponse, MeterCartResponseItem,
+    SubscriptionStatus, TimeInterval,
 };
 
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SubscriptionResponse {
-    pub addons: Vec<AddonCartResponseItem>,
+    pub addons: Vec<Addon>,
     pub billing: BillingAddress,
     pub cancel_at_next_billing_date: bool,
     pub cancelled_at: Option<String>, // Using String for date-time for simplicity, can be chrono::DateTime<Utc>
-    pub created_at: String, // Using String for date-time
+    pub created_at: String,           // Using String for date-time
     pub currency: Currency,
     pub customer: CustomerLimitedDetailsResponse,
     pub discount_cycles_remaining: Option<i32>,
