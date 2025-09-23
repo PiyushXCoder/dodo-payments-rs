@@ -2,7 +2,7 @@
 name = "dodo_payments"
 description = "This is Unoffical SDK of dodopayments.com"
 authors = ["Piyush Raj <piyushxcoder@gmail.com>"]
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 exclude = ["./examples"]
 license = "GPL-3.0-only"
