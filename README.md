@@ -5,9 +5,12 @@
 <img width="200" height="" alt="Image" src="./dodo.png" align="center"/>
 </p>
 
-[![](https://img.shields.io/crates/v/dodo_payments.svg?style=flat-square)](https://crates.io/crates/dodo_payments)
+[![crates.io](https://img.shields.io/crates/v/dodo_payments.svg?style=flat-square)](https://crates.io/crates/dodo_payments)
+[![docs.rs](https://img.shields.io/docsrs/dodo_payments?style=flat-square)](https://docs.rs/dodo_payments/latest/dodo_payments/)
 
 This is Unoffical SDK of [dodopayments.com](https://dodopayments.com/). Almost all features are implemented with a example script. A good amount of testing is required.
+
+🏆 The dodo-payments-rs is listed in [Dodo Payments Community Projects](https://docs.dodopayments.com/community/projects)
 
 ## How to use
 
